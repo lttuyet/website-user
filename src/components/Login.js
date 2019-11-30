@@ -22,7 +22,7 @@ function Login() {
               width="72"
               height="72"
             />
-            <h1 className="h3 mb-3 font-weight-normal ">Đăng nhập</h1>
+            <h1 className="h3 mb-3 font-weight-normal separate">Đăng nhập</h1>
           </div>
 
           <div className="form-label-group">

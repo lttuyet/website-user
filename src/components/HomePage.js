@@ -5,6 +5,7 @@ import CardTutor from './CardTutor';
 import './App.css';
 
 function HomePage() {
+  
   return (
     <div className="bg-light">
       <Menu />

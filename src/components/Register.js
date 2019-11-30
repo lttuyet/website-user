@@ -8,21 +8,25 @@ function Register() {
   return (
     <div>
       <div className="back">
-         <button type="button"  className="btn btn-outline-info ">Trở về trang đăng nhập</button>
+        <button type="button" className="btn btn-outline-info ">
+          Trở về trang đăng nhập
+        </button>
       </div>
       <div className="my_bd_rg">
         <form className="form-signin">
-          <div className="text-center mb-4">
-            <img
-              className="mb-4"
-              src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg"
-              alt=""
-              width="72"
-              height="72"
-            />
-            <h1 className="h3 mb-3 font-weight-normal ">Đăng ký</h1>
+          <div className="text-center ">
+            <h1 className="h3 font-weight-normal separate">Đăng ký</h1>
           </div>
-
+          <div className="form-label-group ">
+            <div className="btn-group btn-group-toggle separate"  data-toggle="buttons">
+              <label className="btn btn-info active" style={{width: "195px"}}>
+                <input type="radio" name="options" id="option1" value="1" checked />Người học
+              </label>
+              <label className="btn btn-info" style={{width: "195px"}}>
+                <input type="radio" name="options" id="option2" value="0" /> Người dạy
+              </label>
+            </div>
+          </div>
           <div className="form-label-group">
             <input
               type="text"
@@ -56,7 +60,6 @@ function Register() {
             <label htmlFor="inputPassword">Mật khẩu</label>
           </div>
 
-          
           <button className="btn btn-lg btn-info btn-block" type="submit">
             Đăng ký
           </button>
