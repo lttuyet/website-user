@@ -23,7 +23,7 @@ function Menu() {
         
           <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
           <button className="btn btn-outline-light my-2 mr-sm-2" type="submit">Tìm Gia Sư</button>
-        <button className="btn btn-outline-light my-2 mr-sm-2" type="submit">Tìm Công Việc</button>
+          <button className="btn btn-outline-light my-2 mr-sm-2" type="submit">Tìm Công Việc</button>
         </form>
       </div>
     </nav>
