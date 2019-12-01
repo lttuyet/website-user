@@ -1,19 +1,21 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import Menu from './Menu';
 
 import './App.css';
 
 function Register() {
   return (
     <div>
+      <Menu/>
       <div className="back">
-        <button type="button" className="btn btn-outline-info ">
+        <button type="button" className="btn btn-outline-info mr-md-3 ">
           Trở về trang đăng nhập
         </button>
       </div>
       <div className="my_bd_rg">
-        <form className="form-signin">
+        <form className="form-signin myshadow">
           <div className="text-center ">
             <h1 className="h3 font-weight-normal separate">Đăng ký</h1>
           </div>

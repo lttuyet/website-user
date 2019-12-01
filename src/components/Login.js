@@ -3,6 +3,7 @@
 import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
+import Menu from './Menu';
 
 import './App.css';
 
@@ -11,9 +12,11 @@ function Login() {
     console.log(response);
   };
   return (
+
     <div>
+      <Menu/>
       <div className="my_bd_rg">
-        <form className="form-signin">
+        <form className="form-signin myshadow">
           <div className="text-center mb-4">
             <img
               className="mb-4"
