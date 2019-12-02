@@ -44,7 +44,7 @@ class Register extends PureComponent {
                 type="text"
                 id="inputName"
                 className="form-control"
-                placeholder="Tên hiển thị"
+                // placeholder="Tên hiển thị"
                 required
                 autoFocus
                 onChange={e => {
@@ -55,10 +55,23 @@ class Register extends PureComponent {
             </div>
             <div className="form-label-group">
               <input
+                type="text"
+                id="inputAddress"
+                className="form-control"
+                // placeholder="Địa chỉ email"
+                required
+                onChange={e => {
+                  this.email = e.target.value;
+                }}
+              />
+              <label htmlFor="inputAddress">Địa chỉ</label>
+            </div>
+            <div className="form-label-group">
+              <input
                 type="email"
                 id="inputEmail"
                 className="form-control"
-                placeholder="Địa chỉ email"
+                // placeholder="Địa chỉ email"
                 required
                 onChange={e => {
                   this.email = e.target.value;
@@ -72,7 +85,7 @@ class Register extends PureComponent {
                 type="password"
                 id="inputPassword"
                 className="form-control"
-                placeholder="Mật khẩu"
+                // placeholder="Mật khẩu"
                 required
                 onChange={e => {
                   this.password = e.target.value;
