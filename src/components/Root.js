@@ -3,6 +3,9 @@ import { BrowserRouter as Router,
      Route,
      Switch 
     } from 'react-router-dom';
+import LoginContainer from '../containers/Login.container';
+import HomePageContainer from '../containers/HomePage.container';
+import RegisterContainer from '../containers/Register.container';
 
 const Root = () => (
     <Router>
@@ -10,10 +13,13 @@ const Root = () => (
         <Switch>
         
            <Route path="/login">
-               <div/>
+               <LoginContainer/>
+           </Route>
+           <Route path="/register">
+               <RegisterContainer/>
            </Route>
            <Route path="/">
-               <div/>
+               <HomePageContainer/>
            </Route>
               
         </Switch>  

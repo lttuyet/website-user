@@ -4,11 +4,12 @@ import React from 'react';
 // import Login from './Login';
 // import Register from './Register';
 import './App.css';
-import Register from './Register';
+import HomePage from './HomePage';
+// import HomePage from './HomePage';
 
 function App() {
   return (
-    <Register/>
+    <HomePage/>
   );
 }
 

@@ -15,7 +15,12 @@
     overflow: auto;
     height: 550px !important;
 }
+.banner{
+  margin-left: 15px;
+  width: 1450px;
+  height: 600px;
 
+}
 
 
 .separate{
@@ -39,6 +44,17 @@
     background: #30ADD1;
     color: white;
 }
+/* Tutor card */
+
+.img-tutor{
+  width: 80px;
+  padding: 5px;
+  margin: 20px;
+  border: 1px solid #30ADD1;
+  border-radius: 50%;
+}
+
+
 /* Register form */
 
 .back{
@@ -56,6 +72,10 @@
     width: 100%;
     
     background-color: #fff;
+}
+
+.type-btn:checked{
+  background-color: yellow !important;
 }
 
 .form-signin {
