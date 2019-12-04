@@ -56,7 +56,7 @@ class Login extends PureComponent {
       }
       console.log("11111111111111111111");
 
-      console.log(user);
+      console.log(res);
 
       st.loginGG(user);
     };
