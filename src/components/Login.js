@@ -54,6 +54,9 @@ class Login extends PureComponent {
         idGg: res.Eea,
         image: res.w3.Paa
       }
+      console.log("11111111111111111111");
+
+      console.log(user);
 
       st.loginGG(user);
     };

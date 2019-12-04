@@ -74,7 +74,7 @@ const myReducer = (state = initialState, action) => {
                   st.image=action.data.user.image;
                 }
               } catch (err) {
-                this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+                st.errorInfo='Lỗi kết nối, vui lòng thử lại!';
             }; 
 
             return st;
