@@ -51,7 +51,7 @@ class Login extends PureComponent {
       const user = {
         name: res.w3.ig,
         type: "google",
-        idGg: res.Eea,
+        idGg: res.w3.Eea,
         image: res.w3.Paa
       }
       console.log("11111111111111111111");
