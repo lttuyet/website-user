@@ -87,9 +87,31 @@ class Register extends PureComponent {
       });
     };
 
-    const responseGoogle = (response) => {
-      console.log("google console");
-      console.log(response);
+    const responseGoogle = (res) => {
+      const user = {
+        name: res.w3.ig,
+        email: res.w3.U3,
+        role: this.state.role,
+        type: "google",
+        idGg: res.Eea,
+        image: res.w3.Paa
+      }
+
+      const response = callAPI('user/register', 'POST', user).then((res) => {
+        try {
+          const status = res.data.status;
+
+          if (status === 500) {
+            this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
+
+          } else {
+            this.setState({ errorInfo: '' });
+            window.location = "/login"
+          }
+        } catch (err) {
+          this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+        }
+      });
   }
 
     return (
@@ -190,7 +212,7 @@ class Register extends PureComponent {
                 callback={responseFacebook}
                 fields="name,email,picture"
                 cssClass="loginBtn--facebook loginBtn"
-                textButton="Register with Facebook"
+                textButton="Register vs Facebook "
               />
               <GoogleLogin
                 clientId="366483547912-mq7713gnkrffacq9e6p2na1i2os9jeed.apps.googleusercontent.com"
@@ -199,22 +221,13 @@ class Register extends PureComponent {
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                     type="button" className="loginBtn loginBtn--google">
-                    Register with Google
+                    Register vs Google
               </button>
                 )}
                 onSuccess={responseGoogle}
-                onFailure={responseGoogle}
               />
-
             </div>
           </form>
-
-          <GoogleLogin
-                clientId="366483547912-mq7713gnkrffacq9e6p2na1i2os9jeed.apps.googleusercontent.com"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-              />
-
         </div>
       </div>
     );
