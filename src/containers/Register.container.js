@@ -4,10 +4,7 @@ import Register from '../components/Register';
 
 const mapstToProps = state => {
   return {
-    // email: state.myReducer.email,
-    // password: state.myReducer.password,
-    // token: state.myReducer.token,
-    
+    isLogin: state.isLogin
   };
 };
 
