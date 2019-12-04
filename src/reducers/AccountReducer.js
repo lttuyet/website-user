@@ -1,8 +1,10 @@
-import * as constants from '../constants/constants';
+import * as actions from '../constants/Actions';
 
 export const initialState = {
-    isLogin:false,
-    email : '',
+    isLogin: false,
+    errorInfo:'',
+
+    email: '',
     password: '',
     name: '',
     address: '',
@@ -11,51 +13,76 @@ export const initialState = {
     image: '',
 };
 
-const myReducer = (state = initialState,action) =>{
-    switch(action.type){
-        case constants.LOGIN :{
-          
-            const st = {...state};
+const myReducer = (state = initialState, action) => {
+    const st = { ...state };
+    let status=0;
 
-            st.email = action.data.email;
-            st.password = action.data.password;
-            // try {
-                // st.name = action.data.res.data.name;
-                // st.address = action.data.res.data.address;
-                // st.role = action.data.res.data.role;
-                // st.token = action.data.res.data.token;
-                // st.image = action.data.res.data.image;
-            // }catch(err){
-              //  st.token = "err" ;
-            // }
-
-            return st;
-        }
-        case constants.LOGIN_FACEBOOK:{
-            const st = {...state};
-
-            st.name = action.data.res.data.name;
-            st.token = action.data.res.data.accessToken;
-            st.image = action.data.res.picture.data.url;
-            
-            // Code đại, chưa test
-
-            st.role = action.data.res.data.role;
-            return st;
-        }
-        case constants.LOGIN_GOOGLE:{
-            const st = {...state};
-
-            st.name = action.data.res.w3.ig;
-            st.image = action.data.res.w3.Paa;
-            st.token = action.data.res.Zi.access_token;
-
-            st.role = action.data.res.data.role;
+    switch (action.type) {
+        case actions.LOGIN: {
+            try {
+                status = action.data.data.status;
+      
+                if (status === 501) {
+                    st.errorInfo='Tài khoản không tồn tại!';
+                } else {
+                  st.errorInfo='';
+                  st.isLogin=true;
+                  st.role=action.data.res.role;
+                  st.name=action.data.res.name;
+                  st.image=action.data.res.image;
+                }
+              } catch (err) {
+                st.errorInfo='Lỗi kết nối, vui lòng thử lại!';
+            }; 
 
             return st;
         }
+        case actions.LOGIN_FACEBOOK: {
+            try {
+                console.log(action.data);
+
+                status = action.data.res.status;
+      
+                if (status === 501) {
+                    st.errorInfo='Tài khoản không tồn tại!';
+                } else {
+                  st.errorInfo='';
+                  st.isLogin=true;
+                  st.role=action.data.res.role;
+                  st.name=action.data.user.name;
+                  st.image=action.data.user.image;
+                }
+              } catch (err) {
+                st.errorInfo='Lỗi kết nối, vui lòng thử lại!';
+            }; 
+
+            return st;
+        }
+        case actions.LOGIN_GOOGLE: {
+            try {
+                console.log(action.data);
+
+                status = action.data.res.status;
+      
+                if (status === 501) {
+                    st.errorInfo='Tài khoản không tồn tại!';
+                } else {
+                  st.errorInfo='';
+                  st.isLogin=true;
+                  st.role=action.data.res.role;
+                  st.name=action.data.user.name;
+                  st.image=action.data.user.image;
+                }
+              } catch (err) {
+                this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+            }; 
+
+            return st;
+        }
+        case actions.LOGOUT:
+            return initialState;
         default:
-            return state;
+            return initialState;
     }
 };
 

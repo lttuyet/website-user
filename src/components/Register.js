@@ -12,10 +12,7 @@ import './App.css';
 class Register extends PureComponent {
   constructor() {
     super();
-    /*this.name = '';
-    this.email = '';
-    this.password = '';
-    this.role = '1';*/
+
     this.handleRoleChange = this.handleRoleChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
@@ -28,8 +25,7 @@ class Register extends PureComponent {
       address: '',
       email: '',
       password: '',
-      errorInfo: '',
-      isSubmited: false
+      errorInfo: ''
     }
   }
 
@@ -86,6 +82,33 @@ class Register extends PureComponent {
         }
       });
     };
+
+    const responseGoogle = (res) => {
+      const user = {
+        name: res.w3.ig,
+        email: res.w3.U3,
+        role: this.state.role,
+        type: "google",
+        idGg: res.Eea,
+        image: res.w3.Paa
+      }
+
+      const response = callAPI('user/register', 'POST', user).then((res) => {
+        try {
+          const status = res.data.status;
+
+          if (status === 500) {
+            this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
+
+          } else {
+            this.setState({ errorInfo: '' });
+            window.location = "/login"
+          }
+        } catch (err) {
+          this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+        }
+      });
+    }
 
     return (
       <div>
@@ -185,25 +208,20 @@ class Register extends PureComponent {
                 callback={responseFacebook}
                 fields="name,email,picture"
                 cssClass="loginBtn--facebook loginBtn"
+                textButton="Register vs Facebook "
               />
               <GoogleLogin
-                clientId="882493539288-b91nk3aqbujvt60s1sh3p5uessam83tq.apps.googleusercontent.com"
+                clientId="366483547912-mq7713gnkrffacq9e6p2na1i2os9jeed.apps.googleusercontent.com"
                 render={renderProps => (
                   <button
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                     type="button" className="loginBtn loginBtn--google">
-                    Register with Google
+                    Register vs Google
               </button>
                 )}
-                buttonText="Login"
-                onSuccess={(res) => {
-                  console.log(res);
-                }}
-
-
+                onSuccess={responseGoogle}
               />
-
             </div>
           </form>
         </div>

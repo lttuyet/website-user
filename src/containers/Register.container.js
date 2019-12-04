@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import * as actions from '../actions/actions';
 import Register from '../components/Register';
 
 const mapstToProps = state => {
@@ -9,10 +8,9 @@ const mapstToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    
-  };
+  return {};
 };
+
 const RegisterContainer = connect(
   mapstToProps,
   mapDispatchToProps

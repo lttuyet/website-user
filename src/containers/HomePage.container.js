@@ -4,6 +4,7 @@ import HomePage from '../components/HomePage';
 
 const mapstToProps = state => {
   return {
+    isLogin: state.isLogin,
     
     // name: state.myReducer.name,
     // image: state.myReducer.image,
@@ -15,7 +16,9 @@ const mapstToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    
+    logout: () => {
+      dispatch(actions.logout());
+    },
   };
 };
 const HomePageContainer = connect(
