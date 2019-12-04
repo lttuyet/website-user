@@ -180,7 +180,7 @@ class Register extends PureComponent {
             </button>
             <div className="social-login mt-md-2">
               <FacebookLogin
-                appId="1088597931155576"
+                appId="1415360621958753"
                 callback={responseFacebook}
                 cssClass="loginBtn--facebook loginBtn"
               />
@@ -191,7 +191,7 @@ class Register extends PureComponent {
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                     type="button" className="loginBtn loginBtn--google">
-                    Login with Google
+                   Register with Google
               </button>
                 )}
                 buttonText="Login"
