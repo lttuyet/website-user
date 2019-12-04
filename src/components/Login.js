@@ -51,9 +51,12 @@ class Login extends PureComponent {
       const user = {
         name: res.w3.ig,
         type: "google",
-        idGg: res.Eea,
+        idGg: res.w3.Eea,
         image: res.w3.Paa
       }
+      console.log("11111111111111111111");
+
+      console.log(res);
 
       st.loginGG(user);
     };
@@ -113,13 +116,14 @@ class Login extends PureComponent {
           </button>
             <div className="social-login mt-md-2">
               <FacebookLogin
-                appId="1088597931155576"
-                fields="name,email,picture"
+                appId="1415360621958753"
                 callback={responseFacebook}
+                fields="name,email,picture"
                 cssClass="loginBtn--facebook loginBtn"
+                textButton="Login with Facebook "
               />
               <GoogleLogin
-                clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                clientId="366483547912-mq7713gnkrffacq9e6p2na1i2os9jeed.apps.googleusercontent.com"
                 render={renderProps => (
                   <button
                     onClick={renderProps.onClick}
@@ -128,14 +132,8 @@ class Login extends PureComponent {
                     Login with Google
               </button>
                 )}
-                buttonText="Login"
-                onSuccess={() => {
-
-                }}
-
-
+                onSuccess={responseGoogle}
               />
-
             </div>
           </form>
         </div>

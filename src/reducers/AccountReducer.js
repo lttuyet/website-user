@@ -23,7 +23,7 @@ const myReducer = (state = initialState, action) => {
                 status = action.data.data.status;
       
                 if (status === 501) {
-                    st.errorInfo='Tài khoản không tồn tại!';
+                    st.errorInfo='Sai thông tin đăng nhập!';
                 } else {
                   st.errorInfo='';
                   st.isLogin=true;
@@ -41,10 +41,10 @@ const myReducer = (state = initialState, action) => {
             try {
                 console.log(action.data);
 
-                status = action.data.res.status;
+                status = action.data.res.data.status;
       
                 if (status === 501) {
-                    st.errorInfo='Tài khoản không tồn tại!';
+                    st.errorInfo='Sai thông tin đăng nhập!';
                 } else {
                   st.errorInfo='';
                   st.isLogin=true;
@@ -62,10 +62,10 @@ const myReducer = (state = initialState, action) => {
             try {
                 console.log(action.data);
 
-                status = action.data.res.status;
+                status = action.data.res.data.status;
       
                 if (status === 501) {
-                    st.errorInfo='Tài khoản không tồn tại!';
+                    st.errorInfo='Sai thông tin đăng nhập!';
                 } else {
                   st.errorInfo='';
                   st.isLogin=true;
@@ -74,7 +74,7 @@ const myReducer = (state = initialState, action) => {
                   st.image=action.data.user.image;
                 }
               } catch (err) {
-                this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+                st.errorInfo='Lỗi kết nối, vui lòng thử lại!';
             }; 
 
             return st;

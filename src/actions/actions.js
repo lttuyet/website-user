@@ -6,10 +6,7 @@ function OnClickLoginFB(user) {
         return err;
     });
 
-    return {
-        user,
-        res
-    };
+    return res;
 }
 
 export const loginFB = (res) => ({
@@ -20,7 +17,7 @@ export const loginFB = (res) => ({
 export const loginFBRequest = (user) => {
     return (dispatch) => {
         return OnClickLoginFB(user).then(res => {
-            dispatch(loginFB(res));
+            dispatch(loginFB({res,user}));
         });
     };
 };
@@ -30,10 +27,7 @@ function OnClickLoginGG(user) {
         return err;
     });
 
-    return {
-        user,
-        res
-    };
+    return res;
 }
 
 export const loginGG = (res) => ({
@@ -44,7 +38,7 @@ export const loginGG = (res) => ({
 export const loginGGRequest = (user) => {
     return (dispatch) => {
         return OnClickLoginGG(user).then(res => {
-            dispatch(loginGG(res));
+            dispatch(loginGG({res,user}));
         });
     };
 };
