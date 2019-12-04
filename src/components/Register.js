@@ -89,7 +89,7 @@ class Register extends PureComponent {
         email: res.w3.U3,
         role: this.state.role,
         type: "google",
-        idGg: res.Eea,
+        idGg: res.w3.Eea,
         image: res.w3.Paa
       }
 
