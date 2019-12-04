@@ -190,9 +190,10 @@ class Register extends PureComponent {
                 callback={responseFacebook}
                 fields="name,email,picture"
                 cssClass="loginBtn--facebook loginBtn"
+                textButton="Register with Facebook"
               />
               <GoogleLogin
-                clientId="366483547912-vnise2u3idq8r82bmj2kvm0i50jhf3si.apps.googleusercontent.com"
+                clientId="366483547912-mq7713gnkrffacq9e6p2na1i2os9jeed.apps.googleusercontent.com"
                 render={renderProps => (
                   <button
                     onClick={renderProps.onClick}
@@ -209,7 +210,7 @@ class Register extends PureComponent {
           </form>
 
           <GoogleLogin
-                clientId="366483547912-vnise2u3idq8r82bmj2kvm0i50jhf3si.apps.googleusercontent.com"
+                clientId="366483547912-mq7713gnkrffacq9e6p2na1i2os9jeed.apps.googleusercontent.com"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
               />
