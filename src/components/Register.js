@@ -61,6 +61,7 @@ class Register extends PureComponent {
     }
 
     const responseFacebook = res => {
+      console.log(res);
       const user = {
         name:res.name,
         email:res.email,
