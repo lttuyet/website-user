@@ -11,13 +11,13 @@ function OnClickLoginFB(user) {
 
 export const loginFB = (res) => ({
     type: actions.LOGIN_FACEBOOK,
-    data:res
+    data: res
 });
 
 export const loginFBRequest = (user) => {
     return (dispatch) => {
         return OnClickLoginFB(user).then(res => {
-            dispatch(loginFB({res,user}));
+            dispatch(loginFB({ res, user }));
         });
     };
 };
@@ -32,13 +32,13 @@ function OnClickLoginGG(user) {
 
 export const loginGG = (res) => ({
     type: actions.LOGIN_GOOGLE,
-    data:res
+    data: res
 });
 
 export const loginGGRequest = (user) => {
     return (dispatch) => {
         return OnClickLoginGG(user).then(res => {
-            dispatch(loginGG({res,user}));
+            dispatch(loginGG({ res, user }));
         });
     };
 };

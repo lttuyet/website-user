@@ -4,13 +4,7 @@ import HomePage from '../components/HomePage';
 
 const mapstToProps = state => {
   return {
-    isLogin: state.isLogin,
-    
-    // name: state.myReducer.name,
-    // image: state.myReducer.image,
-    // token: state.myReducer.token,
-    
-    
+    isLogin: state.isLogin
   };
 };
 

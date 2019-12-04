@@ -184,7 +184,6 @@ class Register extends PureComponent {
                   type: 'normal'
                 }
                 const res = callAPI('user/register', 'POST', user).then((res) => {
-                  console.log(res);
                   try {
                     const status = res.data.status;
 

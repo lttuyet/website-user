@@ -5,7 +5,7 @@ import Login from '../components/Login';
 const mapstToProps = state => {
   return {
     isLogin: state.isLogin,
-    errorInfo:state.errorInfo
+    errorInfo: state.errorInfo
   };
 };
 
@@ -14,10 +14,10 @@ const mapDispatchToProps = dispatch => {
     login: (user) => {
       dispatch(actions.loginRequest(user));
     },
-    loginFB: (res)=>{
+    loginFB: (res) => {
       dispatch(actions.loginFBRequest(res));
     },
-    loginGG: (res)=>{
+    loginGG: (res) => {
       dispatch(actions.loginGGRequest(res));
     }
   };
