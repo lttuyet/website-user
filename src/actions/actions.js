@@ -69,3 +69,7 @@ export const loginRequest = (user) => {
         });
     };
 };
+
+export const logout = () => ({
+    type: actions.LOGOUT
+});

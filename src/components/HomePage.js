@@ -2,15 +2,29 @@ import React, { PureComponent } from 'react';
 import Menu from './Menu';
 import CardTutor from './CardTutor';
 import img from '../hcmus.png';
+import { Redirect } from 'react-router-dom';
 
 import './App.css';
 
 class HomePage extends PureComponent {
   render() {
-    
+    const st = this.props;
+
+    if (!st.isLogin) {
+      return <Redirect to="/login" />;
+    }
+
     return (
       <div className="bg-light">
         <Menu />
+        <button className="btn btn-lg btn-info btn-block"
+          onClick={event => {
+            event.preventDefault();
+
+            st.logout();
+          }}>
+          Đăng xuất
+          </button>
         <div
           id="carouselExampleIndicators"
           className="carousel slide"

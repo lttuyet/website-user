@@ -79,6 +79,8 @@ const myReducer = (state = initialState, action) => {
 
             return st;
         }
+        case actions.LOGOUT:
+            return initialState;
         default:
             return initialState;
     }
