@@ -202,6 +202,7 @@ class Register extends PureComponent {
               </button>
                 )}
                 onSuccess={responseGoogle}
+                onFailure={responseGoogle}
               />
 
             </div>
@@ -210,6 +211,7 @@ class Register extends PureComponent {
           <GoogleLogin
                 clientId="366483547912-vnise2u3idq8r82bmj2kvm0i50jhf3si.apps.googleusercontent.com"
                 onSuccess={responseGoogle}
+                onFailure={responseGoogle}
               />
 
         </div>
