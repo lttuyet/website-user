@@ -192,7 +192,7 @@ class Register extends PureComponent {
                 cssClass="loginBtn--facebook loginBtn"
               />
               <GoogleLogin
-                clientId="882493539288-b91nk3aqbujvt60s1sh3p5uessam83tq.apps.googleusercontent.com"
+                clientId="366483547912-vnise2u3idq8r82bmj2kvm0i50jhf3si.apps.googleusercontent.com"
                 render={renderProps => (
                   <button
                     onClick={renderProps.onClick}
@@ -208,15 +208,7 @@ class Register extends PureComponent {
           </form>
 
           <GoogleLogin
-                clientId="882493539288-b91nk3aqbujvt60s1sh3p5uessam83tq.apps.googleusercontent.com"
-                render={renderProps => (
-                  <button
-                    onClick={renderProps.onClick}
-                    disabled={renderProps.disabled}
-                    type="button" className="loginBtn loginBtn--google">
-                    Register with Google
-              </button>
-                )}
+                clientId="366483547912-vnise2u3idq8r82bmj2kvm0i50jhf3si.apps.googleusercontent.com"
                 onSuccess={responseGoogle}
               />
 
