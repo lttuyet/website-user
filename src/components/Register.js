@@ -206,6 +206,20 @@ class Register extends PureComponent {
 
             </div>
           </form>
+
+          <GoogleLogin
+                clientId="882493539288-b91nk3aqbujvt60s1sh3p5uessam83tq.apps.googleusercontent.com"
+                render={renderProps => (
+                  <button
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}
+                    type="button" className="loginBtn loginBtn--google">
+                    Register with Google
+              </button>
+                )}
+                onSuccess={responseGoogle}
+              />
+
         </div>
       </div>
     );
