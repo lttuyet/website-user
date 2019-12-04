@@ -12,10 +12,7 @@ import './App.css';
 class Register extends PureComponent {
   constructor() {
     super();
-    /*this.name = '';
-    this.email = '';
-    this.password = '';
-    this.role = '1';*/
+
     this.handleRoleChange = this.handleRoleChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
@@ -28,8 +25,7 @@ class Register extends PureComponent {
       address: '',
       email: '',
       password: '',
-      errorInfo: '',
-      isSubmited: false
+      errorInfo: ''
     }
   }
 
@@ -112,7 +108,7 @@ class Register extends PureComponent {
           this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
         }
       });
-  }
+    }
 
     return (
       <div>

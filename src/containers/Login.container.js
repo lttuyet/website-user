@@ -4,23 +4,21 @@ import Login from '../components/Login';
 
 const mapstToProps = state => {
   return {
-    // email: state.myReducer.email,
-    // password: state.myReducer.password,
-    // token: state.myReducer.token,
-    
+    isLogin: state.isLogin,
+    errorInfo:state.errorInfo
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => {
-      dispatch(actions.loginRequest(email, password));
+    login: (user) => {
+      dispatch(actions.loginRequest(user));
     },
     loginFB: (res)=>{
-      dispatch(actions.loginFB(res));
+      dispatch(actions.loginFBRequest(res));
     },
     loginGG: (res)=>{
-      dispatch(actions.loginGG(res));
+      dispatch(actions.loginGGRequest(res));
     }
   };
 };

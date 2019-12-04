@@ -1,91 +1,71 @@
-import axios from 'axios';
-import * as actions from '../constants/constants';
+import * as actions from '../constants/Actions';
+import { callAPI } from '../utils/apiCaller';
 
-
-
-/* Login type normal */
-
-function OnClickLogin(email,password) {
-    const res  = axios.post('',{
-        email,
-        password
-    }).catch(err=>{
+function OnClickLoginFB(user) {
+    const res = callAPI('user/login', 'POST', user).catch(err => {
         return err;
     });
+
+    return {
+        user,
+        res
+    };
+}
+
+export const loginFB = (res) => ({
+    type: actions.LOGIN_FACEBOOK,
+    data:res
+});
+
+export const loginFBRequest = (user) => {
+    return (dispatch) => {
+        return OnClickLoginFB(user).then(res => {
+            dispatch(loginFB(res));
+        });
+    };
+};
+
+function OnClickLoginGG(user) {
+    const res = callAPI('user/login', 'POST', user).catch(err => {
+        return err;
+    });
+
+    return {
+        user,
+        res
+    };
+}
+
+export const loginGG = (res) => ({
+    type: actions.LOGIN_GOOGLE,
+    data:res
+});
+
+export const loginGGRequest = (user) => {
+    return (dispatch) => {
+        return OnClickLoginGG(user).then(res => {
+            dispatch(loginGG(res));
+        });
+    };
+};
+
+function OnClickLogin(user) {
+    const res = callAPI('user/login', 'POST', user).catch(err => {
+        return err;
+    });
+
     return res;
 }
 
-export const login = (email,password,res)=>({
+export const login = (res) => ({
     type: actions.LOGIN,
-    data:{
-        email,
-        password,
-        res
-
-    }
-
+    data: res
 });
 
-export const loginRequest = (email,password)=>{
-    return (dispatch) =>{
-        return OnClickLogin(email,password).then(res=>{
-            dispatch(login(email,password,res));
+export const loginRequest = (user) => {
+    return (dispatch) => {
+        return OnClickLogin(user).then(res => {
+            dispatch(login(res));
         });
     };
 };
-
-/* Login type FB */
-
-export const loginFB = (res)=>({
-    type: actions.LOGIN_FACEBOOK,
-    data:{
-        res,
-    }
-});
-
-/* Login type GG */
-
-export const loginGG = (res)=>({
-    type: actions.LOGIN_GOOGLE,
-    data:{
-        res,
-    }
-});
-
-/*  Register type normal    */
-
-function OnClickRegister(name,address,email,password,role){
-    const res = axios.post('',{
-        name,
-        address,
-        email,
-        password,
-        role
-    }).catch(err=>{
-        return err;
-    });
-    return res;
-};
-
-export const register = (name,address,email,password,res)=>({
-    type: actions.REGISTER,
-    data:{
-        name,
-        address,
-        email,
-        password,
-        res
-    }
-});
-
-export const registerRequest = (name,address,email,password)=>{
-    return (dispatch)=>{
-        return OnClickRegister(name,address,email,password).then(res=>{
-            dispatch(register(name,address,email,password,res));
-        });
-    };
-};
-
-/* Register type FB */
-
-/* Register type GG */
