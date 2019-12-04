@@ -71,28 +71,26 @@ class Register extends PureComponent {
       }
 
       const response = callAPI('user/register', 'POST', user).then((res) => {
-        console.log("11111111111111111111");
-        console.log(res);
         try {
           const status = res.data.status;
 
           if (status === 500) {
             this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
-            console.log("222222222222222222");
 
           } else {
-            console.log("33333333333333333333333");
-
             this.setState({ errorInfo: '' });
             window.location = "/login"
           }
         } catch (err) {
-          console.log("44444444444444444444");
-
           this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
         }
       });
     };
+
+    const responseGoogle = (response) => {
+      console.log("google console");
+      console.log(response);
+  }
 
     return (
       <div>
@@ -195,13 +193,15 @@ class Register extends PureComponent {
               />
               <GoogleLogin
                 clientId="882493539288-b91nk3aqbujvt60s1sh3p5uessam83tq.apps.googleusercontent.com"
-                
-                buttonText="Login"
-                onSuccess={(res) => {
-                  console.log(res);
-                }}
-
-
+                render={renderProps => (
+                  <button
+                    onClick={renderProps.onClick}
+                    disabled={renderProps.disabled}
+                    type="button" className="loginBtn loginBtn--google">
+                    Register with Google
+              </button>
+                )}
+                onSuccess={responseGoogle}
               />
 
             </div>
