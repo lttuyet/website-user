@@ -40,7 +40,7 @@ const myReducer = (state = initialState, action) => {
         }
         case actions.LOGIN_FACEBOOK: {
             console.log("111111111111111111111");
-            console.log(st);
+            console.log(action.data);
 
             try {
                 status = action.data.res.data.status;
@@ -63,7 +63,8 @@ const myReducer = (state = initialState, action) => {
         }
         case actions.LOGIN_GOOGLE: {
             console.log("2222222222222222222222222");
-            console.log(st);
+            console.log(action.data);
+
 
             try {
                 status = action.data.res.data.status;
