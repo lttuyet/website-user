@@ -3,7 +3,7 @@
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import React, { PureComponent } from 'react';
-import Menu from './Menu';
+import Menu from '../containers/MenuContainer';
 import { Redirect } from 'react-router-dom';
 import { callAPI } from '../utils/apiCaller';
 
@@ -114,7 +114,33 @@ class Register extends PureComponent {
       <div>
         <Menu />
         <div className="my_bd_rg">
-          <form className="form-signin myshadow">
+          <form className="form-signin myshadow"
+            onSubmit={(e) => {
+              e.preventDefault();
+
+              const user = {
+                name: this.state.name,
+                address: this.state.address,
+                role: this.state.role,
+                email: this.state.email,
+                password: this.state.password,
+                type: 'normal'
+              }
+              const res = callAPI('user/register', 'POST', user).then((res) => {
+                try {
+                  const status = res.data.status;
+
+                  if (status === 500) {
+                    this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
+                  } else {
+                    this.setState({ errorInfo: '' });
+                    window.location = "/login"
+                  }
+                } catch (err) {
+                  this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+                }
+              });
+            }}>
             <div className="text-center ">
               <h1 className="h3 font-weight-normal separate">Đăng ký</h1>
             </div>
@@ -172,32 +198,6 @@ class Register extends PureComponent {
             <button
               className="btn btn-lg btn-info btn-block"
               type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-
-                const user = {
-                  name: this.state.name,
-                  address: this.state.address,
-                  role: this.state.role,
-                  email: this.state.email,
-                  password: this.state.password,
-                  type: 'normal'
-                }
-                const res = callAPI('user/register', 'POST', user).then((res) => {
-                  try {
-                    const status = res.data.status;
-
-                    if (status === 500) {
-                      this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
-                    } else {
-                      this.setState({ errorInfo: '' });
-                      window.location = "/login"
-                    }
-                  } catch (err) {
-                    this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
-                  }
-                });
-              }}
             >
               Đăng ký
             </button>

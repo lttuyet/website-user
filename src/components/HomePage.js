@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Menu from './Menu';
+import Menu from '../containers/MenuContainer';
 import CardTutor from './CardTutor';
 import img from '../hcmus.png';
 import { Redirect } from 'react-router-dom';
@@ -9,10 +9,6 @@ import './App.css';
 class HomePage extends PureComponent {
   render() {
     const st = this.props;
-
-    if (!st.isLogin) {
-      return <Redirect to="/login" />;
-    }
 
     return (
       <div className="bg-light">

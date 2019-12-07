@@ -4,7 +4,7 @@ import HomePage from '../components/HomePage';
 
 const mapstToProps = state => {
   return {
-    isLogin: state.isLogin
+    isLogin: state.AccountReducer.isLogin
   };
 };
 

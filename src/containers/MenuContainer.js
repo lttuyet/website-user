@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Register from '../components/Register';
+import Menu from '../components/Menu';
 
 const mapstToProps = state => {
   return {
@@ -11,9 +11,9 @@ const mapDispatchToProps = dispatch => {
   return {};
 };
 
-const RegisterContainer = connect(
+const MenuContainer = connect(
   mapstToProps,
   mapDispatchToProps
-)(Register);
+)(Menu);
 
-export default RegisterContainer;
+export default MenuContainer;

@@ -4,8 +4,8 @@ import Login from '../components/Login';
 
 const mapstToProps = state => {
   return {
-    isLogin: state.isLogin,
-    errorInfo: state.errorInfo
+    isLogin: state.AccountReducer.isLogin,
+    errorInfo: state.AccountReducer.errorInfo
   };
 };
 

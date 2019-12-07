@@ -3,25 +3,12 @@ import React, { PureComponent } from 'react';
 class Menu extends PureComponent {
   render() {
     const st = this.props;
-    
-    const token = '';
 
     return (
       <nav className="navbar navbar-expand-sm navbar-dark mybg m-md-2 myshadow ">
         <a className="navbar-brand" href="/">
           UBER FOR TUTOR
         </a>
-        <button
-          className="navbar-toggler d-lg-none"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavId"
-          aria-controls="collapsibleNavId"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
@@ -36,7 +23,7 @@ class Menu extends PureComponent {
             </li>
           </ul>
           <form className="form-inline my-2 my-lg-0">
-            {token !=='' && (
+            {st.isLogin && (
               <div>
                 <input
                   className="form-control mr-sm-2"
@@ -58,7 +45,7 @@ class Menu extends PureComponent {
                 </button>
               </div>
             )}
-            {token === '' && (
+            {!st.isLogin && (
               <div>
                 <button
                   className="btn btn-outline-light my-2 mr-sm-2"

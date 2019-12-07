@@ -1,9 +1,7 @@
-/* eslint-disable jsx-a11y/no-autofocus */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
-import Menu from './Menu';
+import Menu from '../containers/MenuContainer';
 import { Redirect } from 'react-router-dom';
 import './App.css';
 
