@@ -1,7 +1,7 @@
 import * as actions from '../constants/Actions';
 
 export const initialState = {
-    isLogin: true,
+    isLogin: false,
     errorInfo: '',
     role: '',
     name: '',
