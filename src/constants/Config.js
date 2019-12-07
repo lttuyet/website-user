@@ -1,2 +1,0 @@
-export const urlAPI = 'https://apiuber4tutor.herokuapp.com';
-
