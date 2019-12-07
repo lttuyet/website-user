@@ -7,6 +7,7 @@ export const initialState = {
     name: '',
     image: '',
     token: '',
+    type: '',
 
     email: '',
     password: '',
@@ -31,6 +32,7 @@ const myReducer = (state = initialState, action) => {
                     st.name = action.data.data.data.name;
                     st.image = action.data.data.data.image;
                     st.token = action.data.data.token;
+                    st.type = 'normal';
                 }
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
@@ -50,14 +52,20 @@ const myReducer = (state = initialState, action) => {
                 } else {
                     st.errorInfo = '';
                     st.isLogin = true;
-                    st.role = action.data.data.role;
+                    st.role = action.data.res.data.role;
                     st.name = action.data.user.name;
                     st.image = action.data.user.image;
-                    st.token = action.data.data.token;
+                    st.token = action.data.res.data.token;
+                    st.type = 'facebook';
                 }
+                console.log("333333333333333333333333");
+                console.log(st);
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
             };
+
+            console.log("666666666666666666666666");
+            console.log(st);
 
             return st;
         }
@@ -74,14 +82,21 @@ const myReducer = (state = initialState, action) => {
                 } else {
                     st.errorInfo = '';
                     st.isLogin = true;
-                    st.role = action.data.res.role;
+                    st.role = action.data.res.data.role;
                     st.name = action.data.user.name;
                     st.image = action.data.user.image;
-                    st.token = action.data.data.token;
+                    st.token = action.data.res.data.token;
+                    st.type = 'google';
                 }
+
+                console.log("44444444444444444444");
+            console.log(st);
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
             };
+
+            console.log("555555555555555555555");
+            console.log(st);
 
             return st;
         }
