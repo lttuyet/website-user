@@ -1,7 +1,7 @@
 import * as actions from '../constants/Actions';
 
 export const initialState = {
-    isLogin: false,
+    isLogin: true,
     errorInfo: '',
     role: '',
     name: '',
@@ -41,9 +41,6 @@ const myReducer = (state = initialState, action) => {
             return st;
         }
         case actions.LOGIN_FACEBOOK: {
-            console.log("111111111111111111111");
-            console.log(action.data);
-
             try {
                 status = action.data.res.data.status;
 
@@ -58,22 +55,13 @@ const myReducer = (state = initialState, action) => {
                     st.token = action.data.res.data.token;
                     st.type = 'facebook';
                 }
-                console.log("333333333333333333333333");
-                console.log(st);
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
             };
 
-            console.log("666666666666666666666666");
-            console.log(st);
-
             return st;
         }
         case actions.LOGIN_GOOGLE: {
-            console.log("2222222222222222222222222");
-            console.log(action.data);
-
-
             try {
                 status = action.data.res.data.status;
 
@@ -88,15 +76,10 @@ const myReducer = (state = initialState, action) => {
                     st.token = action.data.res.data.token;
                     st.type = 'google';
                 }
-
-                console.log("44444444444444444444");
             console.log(st);
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
             };
-
-            console.log("555555555555555555555");
-            console.log(st);
 
             return st;
         }
