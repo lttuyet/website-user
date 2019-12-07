@@ -32,7 +32,6 @@ export default class UserActions extends React.Component {
 
   render() {
     const st = this.props;
-    console.log(st.image);
 
     return (
       <NavItem tag={Dropdown} caret toggle={this.toggleUserActions} className="useractions">

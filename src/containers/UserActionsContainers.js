@@ -6,7 +6,7 @@ const mapstToProps = state => {
     return {
         role: state.AccountReducer.role,
         name: state.AccountReducer.name,
-        image: state.AccountReducer.token
+        image: state.AccountReducer.image
     };
 };
 
