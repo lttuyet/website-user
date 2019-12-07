@@ -89,11 +89,7 @@ class Register extends PureComponent {
         email: res.w3.U3,
         role: this.state.role,
         type: "google",
-<<<<<<< HEAD
         idGg: res.w3.Eea,
-=======
-        idGg: res.Eea,
->>>>>>> 0cb21cf2dd1695e6373e3d4d6b12c543a6f99a89
         image: res.w3.Paa
       }
 
@@ -188,10 +184,6 @@ class Register extends PureComponent {
                   type: 'normal'
                 }
                 const res = callAPI('user/register', 'POST', user).then((res) => {
-<<<<<<< HEAD
-=======
-                  console.log(res);
->>>>>>> 0cb21cf2dd1695e6373e3d4d6b12c543a6f99a89
                   try {
                     const status = res.data.status;
 
