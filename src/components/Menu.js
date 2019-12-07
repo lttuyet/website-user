@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import UserActions from '../containers/UserActionsContainers';
 
 class Menu extends PureComponent {
   render() {
@@ -24,7 +25,40 @@ class Menu extends PureComponent {
           </ul>
           <form className="form-inline my-2 my-lg-0">
             {st.isLogin && (
+              <UserActions />
+            )}
+            {!st.isLogin && (
               <div>
+                <button
+                  className="btn btn-outline-light my-2 mr-sm-2"
+                  type="button"
+                  onClick={() => {
+                    window.location.href = './register';
+                  }}
+                >
+                  Đăng Ký
+                </button>
+
+                <button
+                  className="btn btn-outline-light my-2 mr-sm-2"
+                  type="button"
+                  onClick={() => {
+                    window.location.href = './login';
+                  }}
+                >
+                  Đăng nhập
+                </button>
+              </div>
+            )}
+          </form>
+        </div>
+      </nav>
+    );
+  }
+}
+
+/*
+<div>
                 <input
                   className="form-control mr-sm-2"
                   type="text"
@@ -44,35 +78,6 @@ class Menu extends PureComponent {
                   Tìm Công Việc
                 </button>
               </div>
-            )}
-            {!st.isLogin && (
-              <div>
-                <button
-                  className="btn btn-outline-light my-2 mr-sm-2"
-                  type="button"
-                  onClick = {()=>{
-                    window.location.href = './register';
-                  }}
-                >
-                  Đăng Ký
-                </button>
-
-                <button
-                  className="btn btn-outline-light my-2 mr-sm-2"
-                  type="button"
-                  onClick = {()=>{
-                    window.location.href = './login';
-                  }}
-                >
-                  Đăng nhập
-                </button>
-              </div>
-            )}
-          </form>
-        </div>
-      </nav>
-    );
-  }
-}
+*/
 
 export default Menu;

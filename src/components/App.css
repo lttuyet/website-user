@@ -3,6 +3,16 @@
     z-index: 999;
 }
 
+
+.useractions {
+  min-width: 190px;
+  max-width: auto;
+}
+
+.avatar{
+  margin-right: 10px;
+}
+
 .mytitle{
     color: #30ADD1;
     font-weight: 400;

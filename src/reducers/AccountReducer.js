@@ -3,14 +3,14 @@ import * as actions from '../constants/Actions';
 export const initialState = {
     isLogin: false,
     errorInfo: '',
+    role: '',
+    name: '',
+    image: '',
+    token: '',
 
     email: '',
     password: '',
-    name: '',
     address: '',
-    role: '',
-    token: '',
-    image: '',
 };
 
 const myReducer = (state = initialState, action) => {
@@ -27,9 +27,10 @@ const myReducer = (state = initialState, action) => {
                 } else {
                     st.errorInfo = '';
                     st.isLogin = true;
-                    st.role = action.data.res.role;
-                    st.name = action.data.res.name;
-                    st.image = action.data.res.image;
+                    st.role = action.data.data.data.role;
+                    st.name = action.data.data.data.name;
+                    st.image = action.data.data.data.image;
+                    st.token = action.data.data.token;
                 }
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
@@ -38,6 +39,9 @@ const myReducer = (state = initialState, action) => {
             return st;
         }
         case actions.LOGIN_FACEBOOK: {
+            console.log("111111111111111111111");
+            console.log(st);
+
             try {
                 status = action.data.res.data.status;
 
@@ -46,9 +50,10 @@ const myReducer = (state = initialState, action) => {
                 } else {
                     st.errorInfo = '';
                     st.isLogin = true;
-                    st.role = action.data.res.role;
+                    st.role = action.data.data.role;
                     st.name = action.data.user.name;
                     st.image = action.data.user.image;
+                    st.token = action.data.data.token;
                 }
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
@@ -57,6 +62,9 @@ const myReducer = (state = initialState, action) => {
             return st;
         }
         case actions.LOGIN_GOOGLE: {
+            console.log("2222222222222222222222222");
+            console.log(st);
+
             try {
                 status = action.data.res.data.status;
 
@@ -68,6 +76,7 @@ const myReducer = (state = initialState, action) => {
                     st.role = action.data.res.role;
                     st.name = action.data.user.name;
                     st.image = action.data.user.image;
+                    st.token = action.data.data.token;
                 }
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';

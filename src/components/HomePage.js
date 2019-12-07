@@ -13,14 +13,6 @@ class HomePage extends PureComponent {
     return (
       <div className="bg-light">
         <Menu />
-        <button className="btn btn-lg btn-info btn-block"
-          onClick={event => {
-            event.preventDefault();
-
-            st.logout();
-          }}>
-          Đăng xuất
-          </button>
         <div
           id="carouselExampleIndicators"
           className="carousel slide"
