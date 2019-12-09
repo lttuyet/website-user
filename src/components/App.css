@@ -29,6 +29,10 @@
     padding: 5px;
 }
 
+.mydialog{
+  width: auto !important;
+}
+
 .myscroll{
     overflow: auto;
     height: 550px !important;
@@ -62,13 +66,20 @@
     color: white;
 }
 /* Tutor card */
+.md-avatar {
+  vertical-align: middle;
+  width: 200px;
+  margin: 15px !important;
+  
+  
+}
 
 .img-tutor{
-  width: 80px;
+  width: 100px;
   padding: 5px;
-  margin: 20px;
+  margin: 15px !important;
   border: 1px solid #30ADD1;
-  border-radius: 50%;
+  
 }
 
 

@@ -65,6 +65,47 @@ class HomePage extends PureComponent {
             </div>
             <div className="myscroll">
               <div className="accordion" id="accordionExample">
+              <div className="card mr-md-2 ml-md-2">
+                  <div className="card-header bg-info" id="heading1">
+                    <h2 className="mb-0">
+                      <button
+                        className="btn btn-info bg-info "
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapse1"
+                        aria-expanded="true"
+                        aria-controls="collapse1"
+                      >
+                        Khu vực
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div
+                    id="collapse1"
+                    className="collapse show"
+                    aria-labelledby="heading1"
+                    data-parent="#accordionExample"
+                  >
+                    <div className="list-group">
+                      <a
+                        href="/"
+                        className="list-group-item list-group-item-action"
+                      >
+                        Hồ Chí Minh
+                      </a>
+                      <a
+                        href="/"
+                        className="list-group-item list-group-item-action"
+                      >
+                        Hà Nội
+                      </a>
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+                
                 <div className="card mr-md-2 ml-md-2">
                   <div className="card-header" id="headingOne">
                     <h2 className="mb-0">
@@ -76,14 +117,14 @@ class HomePage extends PureComponent {
                         aria-expanded="true"
                         aria-controls="collapseOne"
                       >
-                        Môn học
+                        Kỹ năng
                       </button>
                     </h2>
                   </div>
 
                   <div
                     id="collapseOne"
-                    className="collapse show"
+                    className="collapse"
                     aria-labelledby="headingOne"
                     data-parent="#accordionExample"
                   >
@@ -92,47 +133,13 @@ class HomePage extends PureComponent {
                         href="/"
                         className="list-group-item list-group-item-action"
                       >
-                        Ngữ Văn
+                        Kỹ năng gì đó
                       </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Toán Học
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Vật Lý
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Sinh Học
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Hóa Học
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lịch Sử
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Địa Lý
-                      </a>
+                      
                     </div>
                   </div>
                 </div>
+                
                 <div className="card mr-md-2 ml-md-2 ">
                   <div className="card-header" id="headingTwo">
                     <h2 className="mb-0">
@@ -144,7 +151,7 @@ class HomePage extends PureComponent {
                         aria-expanded="false"
                         aria-controls="collapseTwo"
                       >
-                        Khối
+                        Giá tiền theo giờ
                       </button>
                     </h2>
                   </div>
@@ -159,73 +166,25 @@ class HomePage extends PureComponent {
                         href="/"
                         className="list-group-item list-group-item-action"
                       >
-                        Lớp 1
+                        Nhỏ hơn 30.000 VNĐ
                       </a>
                       <a
                         href="/"
                         className="list-group-item list-group-item-action"
                       >
-                        Lớp 2
+                        Từ 30.000 VNĐ - 100.000 VNĐ
                       </a>
                       <a
                         href="/"
                         className="list-group-item list-group-item-action"
                       >
-                        Lớp 3
+                        Từ 100.000 VNĐ - 500.000 VNĐ
                       </a>
                       <a
                         href="/"
                         className="list-group-item list-group-item-action"
                       >
-                        Lớp 4
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lớp 5
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lớp 6
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lớp 7
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lớp 8
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lớp 9
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lớp 10
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lớp 11
-                      </a>
-                      <a
-                        href="/"
-                        className="list-group-item list-group-item-action"
-                      >
-                        Lớp 12
+                        Trên 500.000 VNĐ
                       </a>
                     </div>
                   </div>
