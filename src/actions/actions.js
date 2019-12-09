@@ -67,3 +67,15 @@ export const loginRequest = (user) => {
 export const logout = () => ({
     type: actions.LOGOUT
 });
+
+// ----------------------------
+
+export const addTag = (tag) =>({
+    type: actions.ADD_TAG,
+    data: tag
+});
+
+export const removetag = (tag) =>({
+    type: actions.REMOVE_TAG,
+    data: tag
+});

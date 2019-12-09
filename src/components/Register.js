@@ -1,10 +1,13 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import React, { PureComponent } from 'react';
-import Menu from '../containers/MenuContainer';
 import { Redirect } from 'react-router-dom';
+import Menu from '../containers/MenuContainer';
 import { callAPI } from '../utils/apiCaller';
 
 import './App.css';
@@ -26,7 +29,7 @@ class Register extends PureComponent {
       email: '',
       password: '',
       errorInfo: ''
-    }
+    };
   }
 
   handleRoleChange(e) {
@@ -64,18 +67,18 @@ class Register extends PureComponent {
         type: "facebook",
         idFb: res.id,
         image: res.picture.data.url
-      }
+      };
 
-      const response = callAPI('user/register', 'POST', user).then((res) => {
+      const response = callAPI('user/register', 'POST', user).then((r) => {
         try {
-          const status = res.data.status;
+          const {status} = r.data;
 
           if (status === 500) {
             this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
 
           } else {
             this.setState({ errorInfo: '' });
-            window.location = "/login"
+            window.location = "/login";
           }
         } catch (err) {
           this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
@@ -91,25 +94,26 @@ class Register extends PureComponent {
         type: "google",
         idGg: res.w3.Eea,
         image: res.w3.Paa
-      }
+      };
 
       const response = callAPI('user/register', 'POST', user).then((res) => {
         try {
-          const status = res.data.status;
+          const {status} = res.data;
 
           if (status === 500) {
             this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
 
           } else {
             this.setState({ errorInfo: '' });
-            window.location = "/login"
+            window.location = "/login";
           }
         } catch (err) {
           this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
         }
       });
-    }
+    };
 
+    
     return (
       <div>
         <Menu />
@@ -125,16 +129,16 @@ class Register extends PureComponent {
                 email: this.state.email,
                 password: this.state.password,
                 type: 'normal'
-              }
+              };
               const res = callAPI('user/register', 'POST', user).then((res) => {
                 try {
-                  const status = res.data.status;
+                  const {status} = res.data;
 
                   if (status === 500) {
                     this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
                   } else {
                     this.setState({ errorInfo: '' });
-                    window.location = "/login"
+                    window.location = "/login";
                   }
                 } catch (err) {
                   this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });

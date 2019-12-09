@@ -1,8 +1,12 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/no-autofocus */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/no-unused-state */
 import React, { PureComponent } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
-import Menu from '../containers/MenuContainer';
 import { Redirect } from 'react-router-dom';
+import Menu from '../containers/MenuContainer';
 import './App.css';
 
 class Login extends PureComponent {
@@ -16,7 +20,7 @@ class Login extends PureComponent {
       email: '',
       password: '',
       errorInfo: ''
-    }
+    };
   }
 
   handleEmailChange(e) {
@@ -40,7 +44,7 @@ class Login extends PureComponent {
         type: "facebook",
         idFb: res.id,
         image: res.picture.data.url
-      }
+      };
 
       st.loginFB(user);
     };
@@ -51,7 +55,7 @@ class Login extends PureComponent {
         type: "google",
         idGg: res.w3.Eea,
         image: res.w3.Paa
-      }
+      };
 
       st.loginGG(user);
     };
@@ -68,7 +72,7 @@ class Login extends PureComponent {
                 email: this.state.email,
                 password: this.state.password,
                 type: 'normal'
-              }
+              };
 
               st.login(user);
             }}>

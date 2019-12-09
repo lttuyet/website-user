@@ -2,13 +2,13 @@ import React, { PureComponent } from 'react';
 import Menu from '../containers/MenuContainer';
 import CardTutor from './CardTutor';
 import img from '../hcmus.png';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 import './App.css';
 
 class HomePage extends PureComponent {
   render() {
-    const st = this.props;
+    // const st = this.props;
 
     return (
       <div className="bg-light">
@@ -17,6 +17,7 @@ class HomePage extends PureComponent {
           id="carouselExampleIndicators"
           className="carousel slide"
           data-ride="carousel"
+          
         >
           <ol className="carousel-indicators">
             <li

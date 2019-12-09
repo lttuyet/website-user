@@ -5,7 +5,7 @@ import img from '../logo512.png';
 
 function CardTutor() {
   return (
-    <div className=" m-md-4 ml-md-4 myshadow row" style={{ width: '29rem' }}>
+    <div className=" m-md-2  myshadow row" style={{ width: '29rem' }}>
       <img src={img} className="align-self-left col img-tutor" alt="..." />
       <div className="align-self-right col m-md-3 mt-md-5">
         <h5 className="card-title">Tên Gia sư</h5>
