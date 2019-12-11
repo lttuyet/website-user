@@ -6,7 +6,8 @@ const mapstToProps = state => {
     return {
         role: state.AccountReducer.role,
         name: state.AccountReducer.name,
-        image: state.AccountReducer.image
+        image: state.AccountReducer.image,
+        token:state.AccountReducer.token
     };
 };
 
@@ -14,6 +15,10 @@ const mapDispatchToProps = dispatch => {
     return {
         logout: () => {
             dispatch(actions.logout());
+        },
+        getInfo: (token) => {
+            console.log("1111111111111111");
+            dispatch(actions.getInfoRequest(token));
         },
     };
 };

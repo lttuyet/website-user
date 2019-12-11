@@ -1,5 +1,5 @@
 import * as actions from '../constants/Actions';
-import { callAPI } from '../utils/apiCaller';
+import { callAPI, callAPIAuth } from '../utils/apiCaller';
 
 function OnClickLoginFB(user) {
     const res = callAPI('user/login', 'POST', user).catch(err => {
@@ -66,6 +66,32 @@ export const loginRequest = (user) => {
 
 export const logout = () => ({
     type: actions.LOGOUT
+});
+
+function OnClickGetInfo(token) {
+    const res = callAPIAuth('me', 'GET', token,{}).catch(err => {
+        return err;
+    });
+
+    return res;
+}
+
+export const getInfo = (res) => ({
+    type: actions.GET_INFO,
+    data: res
+});
+
+export const getInfoRequest = (token) => {
+    return (dispatch) => {
+        return OnClickGetInfo(token).then(res => {
+            dispatch(getInfo(res));
+        });
+    };
+};
+
+export const updateName = (name) => ({
+    type: actions.UPDATE_NAME,
+    name
 });
 
 // ----------------------------

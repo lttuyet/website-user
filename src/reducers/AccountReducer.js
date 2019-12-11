@@ -8,6 +8,7 @@ export const initialState = {
     image: '',
     token: '',
     type: '',
+    user:null,
 
     email: '',
     password: '',
@@ -84,6 +85,27 @@ const myReducer = (state = initialState, action) => {
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
             };
+
+            return st;
+        }
+        case actions.GET_INFO:{
+            try{
+                status = action.data.data.status;
+
+                if (status === 507) {
+                    st.errorInfo = '507';
+                } else {
+                    st.errorInfo = '';
+                    st.user = action.data.data.user;
+                }
+            }catch(e){
+                st.errorInfo = '500';
+            }
+
+            return st;
+        }
+        case actions.UPDATE_NAME:{
+            st.name=action.name;
 
             return st;
         }

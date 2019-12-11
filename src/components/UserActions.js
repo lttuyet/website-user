@@ -49,7 +49,9 @@ export default class UserActions extends React.Component {
         {
           st.role === 'tutor' ?
             <Collapse tag={DropdownMenu} right small open={this.state.visible}>
-              <DropdownItem tag={Link} to="user-profile" onClick={()=>{window.location.href='./infor';}}>
+              <DropdownItem tag={Link} to="user-profile" onClick={()=>{
+                st.getInfo(st.token);
+                window.location.href='./infor';}}>
                 <i className="material-icons"  /> Quản lý cá nhân
               </DropdownItem>
               <DropdownItem tag={Link} to="file-manager-list">
