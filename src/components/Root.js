@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginContainer from '../containers/Login.container';
 import HomePageContainer from '../containers/HomePage.container';
 import RegisterContainer from '../containers/Register.container';
+import InforContainer from '../containers/Infor.container';
 
 const Root = ({ store }) => (
     <Provider store={store}>
@@ -14,6 +15,9 @@ const Root = ({ store }) => (
                 </Route>
                 <Route path="/register">
                     <RegisterContainer />
+                </Route>
+                <Route path="/infor">
+                    <InforContainer />
                 </Route>
                 <Route path="/">
                     <HomePageContainer />

@@ -1,3 +1,5 @@
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
 import React from "react";
 import { Link } from "react-router-dom";
 import {
@@ -9,8 +11,8 @@ import {
   NavItem,
   NavLink
 } from "shards-react";
-import './App.css';
 import Avatar from 'react-avatar';
+import './App.css';
 import img from '../logo512.png';
 
 export default class UserActions extends React.Component {
@@ -37,9 +39,9 @@ export default class UserActions extends React.Component {
       <NavItem tag={Dropdown} caret toggle={this.toggleUserActions} className="useractions">
         <DropdownToggle caret tag={NavLink}>
           {
-            st.image === ''
-              ? <Avatar size="35" round={true} className="avatar" src={img} />
-              : <Avatar size="35" round={true} className="avatar" src={st.image} />
+            st.image 
+              ? <Avatar size="35" round className="avatar" src={st.image} />
+              : <Avatar size="35" round className="avatar" src={img} />
           }
 
           <span className="d-none d-md-inline-block">{st.name}</span>
@@ -47,33 +49,33 @@ export default class UserActions extends React.Component {
         {
           st.role === 'tutor' ?
             <Collapse tag={DropdownMenu} right small open={this.state.visible}>
-              <DropdownItem tag={Link} to="user-profile">
-                <i className="material-icons"></i> Quản lý cá nhân
+              <DropdownItem tag={Link} to="user-profile" onClick={()=>{window.location.href='./infor';}}>
+                <i className="material-icons"  /> Quản lý cá nhân
               </DropdownItem>
               <DropdownItem tag={Link} to="file-manager-list">
-                <i className="material-icons"></i> Quản lý lớp học
+                <i className="material-icons" /> Quản lý lớp học
               </DropdownItem>
               <DropdownItem tag={Link} to="transaction-history">
-                <i className="material-icons"></i> Thống kê doanh thu
+                <i className="material-icons" /> Thống kê doanh thu
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem className="text-danger" onClick={st.logout}>
-                <i className="material-icons text-danger"></i> Đăng xuất
+                <i className="material-icons text-danger" /> Đăng xuất
               </DropdownItem>
             </Collapse> :
             <Collapse tag={DropdownMenu} right small open={this.state.visible}>
-              <DropdownItem tag={Link} to="user-profile">
-                <i className="material-icons"></i> Quản lý cá nhân
+              <DropdownItem tag={Link} to="user-profile" onClick={()=>{window.location.href='./infor';}}>
+                <i className="material-icons" /> Quản lý cá nhân
               </DropdownItem>
               <DropdownItem tag={Link} to="file-manager-list">
-                <i className="material-icons"></i> Quản lý hợp đồng
+                <i className="material-icons" /> Quản lý hợp đồng
               </DropdownItem>
               <DropdownItem tag={Link} to="transaction-history">
-                <i className="material-icons"></i> Lớp học của tôi
+                <i className="material-icons" /> Lớp học của tôi
               </DropdownItem>
               <DropdownItem divider />
               <DropdownItem className="text-danger" onClick={st.logout}>
-                <i className="material-icons text-danger"></i> Đăng xuất
+                <i className="material-icons text-danger" /> Đăng xuất
               </DropdownItem>
             </Collapse>
         }
