@@ -30,7 +30,7 @@ class Menu extends PureComponent {
             {!st.isLogin && (
               <div>
                 <button
-                  className="btn btn-outline-light my-2 mr-sm-2"
+                  className="btn btn-outline-light mr-sm-2"
                   type="button"
                   onClick={() => {
                     window.location.href = './register';
@@ -40,7 +40,7 @@ class Menu extends PureComponent {
                 </button>
 
                 <button
-                  className="btn btn-outline-light my-2 mr-sm-2"
+                  className="btn btn-outline-light mr-sm-2"
                   type="button"
                   onClick={() => {
                     window.location.href = './login';

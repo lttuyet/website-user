@@ -12,7 +12,7 @@ import './shard.dashboard.css';
 import MenuContainer from '../containers/MenuContainer';
 import img from '../logo512.png';
 import TagInput from './TagInput';
-import { callAPIAuth} from '../utils/apiCaller';
+import { callAPIAuth } from '../utils/apiCaller';
 
 class Infor extends PureComponent {
   constructor(props) {
@@ -60,8 +60,8 @@ class Infor extends PureComponent {
       address: user.address,
       intro: user.intro,
       typeInfo: 0,
-      info: ''
-      ,
+      info: '',
+      image: '',
       temp: {
         name: user.name,
         address: user.address,
@@ -165,6 +165,86 @@ class Infor extends PureComponent {
             <div className="col-lg-8">
               <div className="card card-small mb-4">
                 <div className="card-header border-bottom">
+                  <h6 className="m-0">Ảnh đại diện</h6>
+                </div>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item p-3">
+                    <div className="row">
+                      <div className="col">
+                        <form onSubmit={event => {
+                          event.preventDefault();
+                          
+                          const data = new FormData();
+
+                          data.append('file', this.state.image);
+                          data.append('upload_preset', 'carovn');
+
+                          // eslint-disable-next-line no-undef
+                          const res = fetch(
+                            'https://api.cloudinary.com/v1_1/dgfvzem0u/image/upload',
+                            {
+                              method: 'POST',
+                              body: data
+                            }
+                          );
+
+                          console.log(res);
+
+                          const file = res;
+                          const image = {
+                            image:file.secure_url
+                          };
+
+                          // eslint-disable-next-line no-unused-vars
+                          const result = callAPIAuth('updateimage', 'POST', st.token, image).then((response) => {
+                            try {
+                              const { status } = response.data;
+
+                              if (status === 510) {
+                                this.setState({
+                                  typeInfo: 2,
+                                  info: 'Ảnh đại diện của bạn chưa được cập nhật!'
+                                });
+                              } else {
+                                this.setState({
+                                  typeInfo: 1,
+                                  info: 'Ảnh đại diện của bạn đã được cập nhật!',
+                                  temp: {
+                                    address: data.address
+                                  }
+                                });
+
+                                st.updateImage(this.state.file.secure_url);
+                              }
+                            } catch (err) {
+                              this.setState({ typeInfo: 2, info: 'Lỗi kết nối, vui lòng thử lại!' });
+                            }
+                          });
+                        }}
+                          >
+                            <input
+                              type="file"
+                              name="file"
+                              accept="image/*"
+                              onChange={async e => {
+                                const { files } = e.target;
+                                this.setState({
+                                  image: files[0]
+                                });
+                              }} />
+
+                            <button type="submit" className="btn btn-info">
+                              Cập nhật
+                          </button>
+                        </form>
+                    </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="card card-small mb-4">
+                <div className="card-header border-bottom">
                   <h6 className="m-0">Thông tin cá nhân</h6>
                 </div>
                 <ul className="list-group list-group-flush">
@@ -193,8 +273,8 @@ class Infor extends PureComponent {
                                 this.setState({
                                   typeInfo: 1,
                                   info: 'Thông tin cá nhân của bạn đã được cập nhật!',
-                                  temp:{
-                                    address:data.address
+                                  temp: {
+                                    address: data.address
                                   }
                                 });
                                 st.updateName(this.state.name);
@@ -334,56 +414,11 @@ class Infor extends PureComponent {
                   </ul>
                 </div>
               )}
-              <div className="card card-small mb-4">
-                <div className="card-header border-bottom">
-                  <h6 className="m-0">Ảnh đại diện</h6>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item p-3">
-                    <div className="row">
-                      <div className="col">
-                        <form>
-                          <input
-                            type="file"
-                            name="file"
-                            onChange={async e => {
-                              const { files } = e.target;
-                              const data = new FormData();
-                              data.append('file', files[0]);
-                              data.append('upload_preset', 'applon');
-                              this.loading = true;
-                              // eslint-disable-next-line no-undef
-                              const res = await fetch(
-
-                                'https://api.cloudinary.com/v1_1/ddifartbn/image/upload',
-                                {
-                                  method: 'POST',
-                                  body: data
-                                }
-                              );
-                              const file = await res.json();
-
-                              // link 
-                              this.image = file.url;
-
-                              this.loading = false;
-                            }}
-                          />
-
-                          <button type="button" className="btn btn-info">
-                            Cập nhật
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
           {/* <!-- End Default Light Table --> */}
         </div>
-      </div>
+      </div >
     );
   }
 }

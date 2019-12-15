@@ -109,6 +109,11 @@ const myReducer = (state = initialState, action) => {
 
             return st;
         }
+        case actions.UPDATE_IMAGE:{
+            st.image=action.image;
+
+            return st;
+        }
         case actions.LOGOUT:
             return initialState;
         default:

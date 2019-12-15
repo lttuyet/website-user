@@ -94,6 +94,11 @@ export const updateName = (name) => ({
     name
 });
 
+export const updateImage = (image) => ({
+    type: actions.UPDATE_IMAGE,
+    image
+});
+
 // ----------------------------
 
 export const addTag = (tag) =>({

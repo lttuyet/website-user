@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Menu from '../containers/MenuContainer';
 import CardTutor from './CardTutor';
-import img from '../hcmus.png';
+import img from '../banner.png';
 // import { Redirect } from 'react-router-dom';
 
 import './App.css';
