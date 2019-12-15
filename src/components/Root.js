@@ -5,6 +5,7 @@ import LoginContainer from '../containers/Login.container';
 import HomePageContainer from '../containers/HomePage.container';
 import RegisterContainer from '../containers/Register.container';
 import InforContainer from '../containers/Infor.container';
+import ListTutors from './ListTutors';
 
 const Root = ({ store }) => (
     <Provider store={store}>
@@ -18,6 +19,9 @@ const Root = ({ store }) => (
                 </Route>
                 <Route path="/infor">
                     <InforContainer />
+                </Route>
+                <Route path="/listtutors">
+                    <ListTutors/>
                 </Route>
                 <Route path="/">
                     <HomePageContainer />

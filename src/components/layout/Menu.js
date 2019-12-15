@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import UserActions from '../containers/UserActionsContainers';
+import UserActions from '../../containers/UserActionsContainers';
 
 class Menu extends PureComponent {
   render() {
@@ -12,16 +12,31 @@ class Menu extends PureComponent {
         </a>
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li className="nav-item active">
-              <a className="nav-link" href="/">
-                Trang Chủ <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-                Link
-              </a>
-            </li>
+            {st.page === "home" ?
+              <li className="nav-item active">
+                <a className="nav-link" href="/">
+                  Trang Chủ <span className="sr-only">(current)</span>
+                </a>
+              </li> :
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Trang Chủ
+                </a>
+              </li>}
+            {st.page === "listtutors" ?
+              <li className="nav-item active">
+                <a className="nav-link" href="/listtutors">
+                  Danh sách gia sư <span className="sr-only">(current)</span>
+                </a>
+              </li> :
+              <li className="nav-item">
+                <a className="nav-link" href="/listtutors">
+                  Danh sách gia sư
+                </a>
+              </li>
+            }
+
+
           </ul>
           <form className="form-inline my-2 my-lg-0">
             {st.isLogin && (

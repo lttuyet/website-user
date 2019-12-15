@@ -11,7 +11,7 @@ export function callAPI(endPoint, method = 'GET', body) {
   });
 }
 
-export function callAPIAuth(endPoint, method = 'GET', token, body={}) {
+export function callAPIAuth(endPoint, method = 'GET', token, body = {}) {
   return axios({
     method,
     url: `${Config.urlAPI}/${endPoint}`,

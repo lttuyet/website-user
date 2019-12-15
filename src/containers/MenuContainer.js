@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Menu from '../components/Menu';
+import Menu from '../components/layout/Menu';
 
 const mapstToProps = state => {
   return {

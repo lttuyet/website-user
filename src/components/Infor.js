@@ -173,7 +173,7 @@ class Infor extends PureComponent {
                       <div className="col">
                         <form onSubmit={event => {
                           event.preventDefault();
-                          
+
                           const data = new FormData();
 
                           data.append('file', this.state.image);
@@ -192,7 +192,7 @@ class Infor extends PureComponent {
 
                           const file = res;
                           const image = {
-                            image:file.secure_url
+                            image: file.secure_url
                           };
 
                           // eslint-disable-next-line no-unused-vars
@@ -221,23 +221,23 @@ class Infor extends PureComponent {
                             }
                           });
                         }}
-                          >
-                            <input
-                              type="file"
-                              name="file"
-                              accept="image/*"
-                              onChange={async e => {
-                                const { files } = e.target;
-                                this.setState({
-                                  image: files[0]
-                                });
-                              }} />
+                        >
+                          <input
+                            type="file"
+                            name="file"
+                            accept="image/*"
+                            onChange={async e => {
+                              const { files } = e.target;
+                              this.setState({
+                                image: files[0]
+                              });
+                            }} />
 
-                            <button type="submit" className="btn btn-info">
-                              Cập nhật
+                          <button type="submit" className="btn btn-info">
+                            Cập nhật
                           </button>
                         </form>
-                    </div>
+                      </div>
                     </div>
                   </li>
                 </ul>

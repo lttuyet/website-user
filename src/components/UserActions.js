@@ -39,7 +39,7 @@ export default class UserActions extends React.Component {
       <NavItem tag={Dropdown} caret toggle={this.toggleUserActions} className="useractions">
         <DropdownToggle caret tag={NavLink}>
           {
-            st.image 
+            st.image
               ? <Avatar size="35" round className="avatar" src={st.image} />
               : <Avatar size="35" round className="avatar" src={img} />
           }
@@ -49,10 +49,11 @@ export default class UserActions extends React.Component {
         {
           st.role === 'tutor' ?
             <Collapse tag={DropdownMenu} right small open={this.state.visible}>
-              <DropdownItem tag={Link} to="user-profile" onClick={()=>{
+              <DropdownItem tag={Link} to="user-profile" onClick={() => {
                 st.getInfo(st.token);
-                window.location.href='./infor';}}>
-                <i className="material-icons"  /> Quản lý cá nhân
+                window.location.href = './infor';
+              }}>
+                <i className="material-icons" /> Quản lý cá nhân
               </DropdownItem>
               <DropdownItem tag={Link} to="file-manager-list">
                 <i className="material-icons" /> Quản lý lớp học
@@ -66,7 +67,7 @@ export default class UserActions extends React.Component {
               </DropdownItem>
             </Collapse> :
             <Collapse tag={DropdownMenu} right small open={this.state.visible}>
-              <DropdownItem tag={Link} to="user-profile" onClick={()=>{window.location.href='./infor';}}>
+              <DropdownItem tag={Link} to="user-profile" onClick={() => { window.location.href = './infor'; }}>
                 <i className="material-icons" /> Quản lý cá nhân
               </DropdownItem>
               <DropdownItem tag={Link} to="file-manager-list">
