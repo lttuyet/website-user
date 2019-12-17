@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import img from '../banner.png';
-import './App.css';
+import img from './banner.png';
+import '../App.css';
 
 class Banner extends PureComponent {
     render() {

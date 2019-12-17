@@ -1,187 +1,113 @@
+/* eslint-disable react/no-unused-state */
 import React, { PureComponent } from 'react';
 import CardTutor from './CardTutor';
 import './App.css';
 import Menu from '../containers/MenuContainer';
+import ListPages from './ListPages';
+import { callAPI } from '../utils/apiCaller';
+import Footer from './layout/Footer';
 
 class ListTutor extends PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            tutors: [],
+            error: false,
+            page: 0,
+        };
+    }
+
+    componentDidMount() {
+        this.getTutors(0);
+    }
+
+    getTutors = async (_page) => {
+        try {
+            const req = {
+                page: _page
+            };
+            const res = await callAPI('user/listtutors', 'POST', req);
+
+            this.setState({
+                tutors: res.data.tutors,
+                page: _page,
+                error: false
+            });
+        } catch (e) {
+            this.setState({
+                error: true
+            });
+        }
+    }
+
+    setPage(current) {
+        this.setState({
+            page: current
+        });
+    }
+
     render() {
+        const st = this.state;
+
+        if (st.error) {
+            return <div />;
+        }
+
+        const { tutors } = this.state;
+        const size = Math.ceil(tutors.length / 6);
+        const { page } = this.state;
+        const start = page * 6;
+        const tutorsCurrentPage = tutors.slice(start, start + 6);
+        const tutorCards = tutorsCurrentPage.map((tutor) => {
+            return (
+                <CardTutor tutor={tutor} />
+            );
+        });
+
         return (
-            <div className="bg-light">
+            <div className="bg-light container-fluid">
                 <Menu page="listtutors" />
-                <div className="row ">
-                    <div className="col-md-3 ">
-                        <div className="row row-cols-1 row-cols-md-2">
-                            <p className=" col m-md-2 ml-md-4 mytitle separate ">PHÂN LOẠI</p>
-                        </div>
-                        <div className="myscroll">
-                            <div className="accordion" id="accordionExample">
-                                <div className="card mr-md-2 ml-md-2">
-                                    <div className="card-header bg-info" id="heading1">
-                                        <h2 className="mb-0">
-                                            <button
-                                                className="btn btn-info bg-info "
-                                                type="button"
-                                                data-toggle="collapse"
-                                                data-target="#collapse1"
-                                                aria-expanded="true"
-                                                aria-controls="collapse1"
-                                            >
-                                                Khu vực
-                      </button>
-                                        </h2>
-                                    </div>
-
-                                    <div
-                                        id="collapse1"
-                                        className="collapse show"
-                                        aria-labelledby="heading1"
-                                        data-parent="#accordionExample"
-                                    >
-                                        <div className="list-group">
-                                            <a
-                                                href="/"
-                                                className="list-group-item list-group-item-action"
-                                            >
-                                                Hồ Chí Minh
-                      </a>
-                                            <a
-                                                href="/"
-                                                className="list-group-item list-group-item-action"
-                                            >
-                                                Hà Nội
-                      </a>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="card mr-md-2 ml-md-2">
-                                    <div className="card-header" id="headingOne">
-                                        <h2 className="mb-0">
-                                            <button
-                                                className="btn btn-info"
-                                                type="button"
-                                                data-toggle="collapse"
-                                                data-target="#collapseOne"
-                                                aria-expanded="true"
-                                                aria-controls="collapseOne"
-                                            >
-                                                Kỹ năng
-                      </button>
-                                        </h2>
-                                    </div>
-
-                                    <div
-                                        id="collapseOne"
-                                        className="collapse"
-                                        aria-labelledby="headingOne"
-                                        data-parent="#accordionExample"
-                                    >
-                                        <div className="list-group">
-                                            <a
-                                                href="/"
-                                                className="list-group-item list-group-item-action"
-                                            >
-                                                Kỹ năng gì đó
-                      </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="card mr-md-2 ml-md-2 ">
-                                    <div className="card-header" id="headingTwo">
-                                        <h2 className="mb-0">
-                                            <button
-                                                className="btn btn-info "
-                                                type="button"
-                                                data-toggle="collapse"
-                                                data-target="#collapseTwo"
-                                                aria-expanded="false"
-                                                aria-controls="collapseTwo"
-                                            >
-                                                Giá tiền theo giờ
-                      </button>
-                                        </h2>
-                                    </div>
-                                    <div
-                                        id="collapseTwo"
-                                        className="collapse"
-                                        aria-labelledby="headingTwo"
-                                        data-parent="#accordionExample"
-                                    >
-                                        <div className="list-group">
-                                            <a
-                                                href="/"
-                                                className="list-group-item list-group-item-action"
-                                            >
-                                                Nhỏ hơn 30.000 VNĐ
-                      </a>
-                                            <a
-                                                href="/"
-                                                className="list-group-item list-group-item-action"
-                                            >
-                                                Từ 30.000 VNĐ - 100.000 VNĐ
-                      </a>
-                                            <a
-                                                href="/"
-                                                className="list-group-item list-group-item-action"
-                                            >
-                                                Từ 100.000 VNĐ - 500.000 VNĐ
-                      </a>
-                                            <a
-                                                href="/"
-                                                className="list-group-item list-group-item-action"
-                                            >
-                                                Trên 500.000 VNĐ
-                      </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                {st.error &&
+                    <div
+                        className="alert alert-danger alert-dismissible fade show mb-0"
+                        role="alert"
+                    >
+                        <button
+                            type="button"
+                            className="close"
+                            data-dismiss="alert"
+                            aria-label="Close"
+                        >
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <i className="fa fa-check mx-2" />
+                        <strong>Thất bại!</strong> Xảy ra lỗi trong quá trình tải! Vui lòng thử lại!
                     </div>
-                    <div className="col-md-9 ">
+                }
+
+                <div className="row ">
+                    <div className="container ">
                         <div className="row row-cols-1 row-cols-md-1">
                             <p className=" col m-md-2 mr-md-4 mytitle separate">
                                 DANH SÁCH GIA SƯ
-              </p>
+                            </p>
                         </div>
-                        <div className="row row-cols-1 row-cols-md-1 myscroll">
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
-                            <div className="col mb-3">
-                                <CardTutor />
-                            </div>
+                        <div className="row row-cols-1 row-cols-md-1">
+                            {tutorCards}
                         </div>
+                        <div className="row mt-md-5 mr-md-2 float-right">
+                            <ListPages className="page" current={page} size={size} onClick={(p) => { this.setPage(p); }} />
+                        </div>
+
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }
 }
+
+
 
 export default ListTutor;

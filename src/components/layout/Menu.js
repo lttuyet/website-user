@@ -6,31 +6,31 @@ class Menu extends PureComponent {
     const st = this.props;
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark mybg m-md-2 myshadow ">
+      <nav className="navbar navbar-expand-sm navbar-dark mybg mt-md-2 myshadow ">
         <a className="navbar-brand" href="/">
-          UBER FOR TUTOR
+          <h4 className="text-white mt-md-1">UBER FOR TUTOR</h4>
         </a>
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             {st.page === "home" ?
               <li className="nav-item active">
-                <a className="nav-link" href="/">
+                <a className="nav-link text-uppercase" href="/">
                   Trang Chủ <span className="sr-only">(current)</span>
                 </a>
               </li> :
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <a className="nav-link text-uppercase" href="/">
                   Trang Chủ
                 </a>
               </li>}
             {st.page === "listtutors" ?
               <li className="nav-item active">
-                <a className="nav-link" href="/listtutors">
+                <a className="nav-link text-uppercase" href="/listtutors">
                   Danh sách gia sư <span className="sr-only">(current)</span>
                 </a>
               </li> :
               <li className="nav-item">
-                <a className="nav-link" href="/listtutors">
+                <a className="nav-link text-uppercase" href="/listtutors">
                   Danh sách gia sư
                 </a>
               </li>

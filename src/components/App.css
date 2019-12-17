@@ -41,7 +41,9 @@
 
 .myscroll{
     overflow: auto;
-    height: 550px !important;
+    height: 500px !important;
+    padding: 10px;
+    margin-bottom: 10px;
 }
 .banner{
   margin: 10px !important;
@@ -55,7 +57,22 @@
 .typical{
   box-shadow: 0px 5px 7px #888888;
     z-index: 999;
-    width: 30%;
+    max-width: 32%;
+  min-width: 230px;
+  
+}
+
+.crop-text {
+  -webkit-line-clamp: 2;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.page{
+  box-shadow: 0px 5px 7px #888888;
+    z-index: 999;
 }
 
 
@@ -63,7 +80,6 @@
     border-bottom: 3px solid #30ADD1;
     width: 100%;
     padding-bottom: 10px;
-    margin-top: 50px;
     
 }
 
@@ -79,14 +95,12 @@
 .myct{
   background: #30ADD1;
   color: white;
-  width: 40%;
-  margin: auto;
+  
 }
 
 .myth{
   color: white;
-width: 40%;
-margin: auto;
+
 
 }
 
@@ -295,3 +309,94 @@ margin: auto;
   .loginBtn--google:focus {
     background: #E74B37 !important;
   }
+
+
+  /*-------------------------FOOTER------------------*/
+  .bg-grey {
+    background: #292929;
+ }
+ .logo-footer {
+    margin-bottom: 40px;
+ }
+ footer {
+        color: grey;
+ }
+
+ 
+  footer h6 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 40px;
+    position: relative;
+}
+footer h6:after {
+    position: absolute;
+    content: "";
+    background: grey;
+    width: 12%;
+    height: 1px;
+    left: 0;
+    bottom: -20px;
+}
+     .btn-footer {
+                 color: grey;
+              
+                text-decoration: none;
+                border: 1px solid;
+                border-radius: 43px;
+                font-size: 13px;
+                padding: 7px 30px;
+                line-height: 47px;
+     }
+     .btn-footer:hover {
+                
+                text-decoration: none;
+               
+     }
+    .form-footer input[type="text"] {
+        border: none;
+    border-radius: 16px 0 0 16px;
+    outline: none;
+    padding-left: 10px;
+    
+}
+::placeholder {
+    font-size: 10px;
+    padding-left: 10px;
+    font-style: italic;
+}
+ .form-footer input[type="button"] {
+    border: none;
+    background:#232323;
+        margin-left: -5px;
+    color: grey;
+    outline: none;
+    border-radius: 0 16px 16px 0;
+    padding: 2px 12px;
+}
+     .social .fa {
+    color: grey;
+    font-size: 22px;
+    padding: 10px 15px;
+    background: #3c3c3c;
+}
+     footer ul li {
+    list-style: none;
+    display: block;
+}
+  footer ul  {
+   padding-left: 0;
+}
+footer ul  li a{
+  text-decoration: none;
+  color: grey;
+  text-decoration:none;
+}
+a:hover {
+    text-decoration: none;
+    color: #f5f5f5 !important;
+    
+}
+.logo-part {
+    border-right: 1px solid grey;
+    height: 100%;
+    }

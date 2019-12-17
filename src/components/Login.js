@@ -8,6 +8,7 @@ import GoogleLogin from 'react-google-login';
 import { Redirect } from 'react-router-dom';
 import Menu from '../containers/MenuContainer';
 import './App.css';
+import Footer from './layout/Footer';
 
 class Login extends PureComponent {
   constructor() {
@@ -61,7 +62,7 @@ class Login extends PureComponent {
     };
 
     return (
-      <div>
+      <div className="container-fluid">
         <Menu />
         <div className="my_bd_rg">
           <form className="form-signin myshadow"
@@ -76,15 +77,9 @@ class Login extends PureComponent {
 
               st.login(user);
             }}>
-            <div className="text-center mb-4">
-              <img
-                className="mb-4"
-                src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg"
-                alt=""
-                width="72"
-                height="72"
-              />
-              <h1 className="h3 mb-3 font-weight-normal separate">Đăng nhập</h1>
+            <div className="text-center mt-md-1">
+            
+              <h1 className="h3 font-weight-normal separate">Đăng nhập</h1>
             </div>
 
             <div className="form-label-group">
@@ -136,6 +131,7 @@ class Login extends PureComponent {
             </div>
           </form>
         </div>
+        <Footer/>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
-import './App.css';
-import CardTutor from './CardTutor';
-import { callAPI } from '../utils/apiCaller';
+import '../App.css';
+import CardTutor from '../CardTutor';
+import { callAPI } from '../../utils/apiCaller';
 
 class TypicalTutors extends PureComponent {
     constructor(props) {
@@ -48,9 +48,9 @@ class TypicalTutors extends PureComponent {
         });
 
         return (
-            <div className="bg-light m-10">
+            <div className="bg-light m-10 mt-md-5">
                 <div className="row">
-                    <h1 className="separate text-center">GIA SƯ NỔI BẬT</h1>
+                    <h2 className="separate text-center text-danger">GIA SƯ NỔI BẬT</h2>
                 </div>
                 <div className="row">
                     {tutorCards}

@@ -11,6 +11,7 @@ import Menu from '../containers/MenuContainer';
 import { callAPI } from '../utils/apiCaller';
 
 import './App.css';
+import Footer from './layout/Footer';
 
 class Register extends PureComponent {
   constructor() {
@@ -115,7 +116,7 @@ class Register extends PureComponent {
 
     
     return (
-      <div>
+      <div className="container-fluid">
         <Menu />
         <div className="my_bd_rg">
           <form className="form-signin myshadow"
@@ -228,6 +229,7 @@ class Register extends PureComponent {
             </div>
           </form>
         </div>
+        <Footer/>
       </div>
     );
   }
