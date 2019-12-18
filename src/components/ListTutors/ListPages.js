@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Pagination } from 'react-bootstrap';
-import './App.css';
+import '../App.css';
 
 class ListPages extends PureComponent {
     render() {

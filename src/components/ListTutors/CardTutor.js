@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import '../App.css';
 
-import img from '../logo512.png';
+import img from './logo192.png';
 
 function CardTutor(data) {
-  if(!data){
-    return <div/>;
+  if (!data) {
+    return <div />;
   }
 
   const { tutor } = data;
@@ -31,16 +31,19 @@ function CardTutor(data) {
             <img src={img} className="md-avatar round mx-auto d-block" alt="..." />
         }
         <h5 className="card-title text-center ">{tutor.name}</h5>
-        <div  style={{minHeight:"40px"}}>
-        <h7 className=" card-title m-md-2 crop-text">Địa chỉ: {tutor.address ||" Chưa cập nhật"}</h7>
+        <div style={{ minHeight: "40px" }}>
+          <h7 className=" card-title m-md-2 crop-text">Địa chỉ: {tutor.address || " Chưa cập nhật"}</h7>
         </div>
-        <div style={{minHeight:"40px"}}>
-        <h7 className=" card-title m-md-2 crop-text" >Kỹ năng: {tag || "Chưa cập nhật"}</h7>
+        <div style={{ minHeight: "40px" }}>
+          <h7 className=" card-title m-md-2 crop-text" >Kỹ năng: {tag || "Chưa cập nhật"}</h7>
         </div>
-        <div style={{minHeight:"40px"}}>
-          <h7 className="d-block card-title m-md-2">Giá theo giờ: {tutor.price || "Chưa cập nhật"} (Ngàn đồng)</h7>
+        <div>
+          <h7 className="d-block card-title m-md-2">Số hợp đồng: {tutor.numOfContracts}</h7>
         </div>
-        <hr/>
+        <div style={{ minHeight: "40px" }}>
+          <h7 className="d-block card-title m-md-2">Giá theo giờ: {tutor.price || "Chưa cập nhật"} (KVNĐ)</h7>
+        </div>
+        <hr />
         <div className="row float-right d-block mb-md-2">
           <button
             type="button"

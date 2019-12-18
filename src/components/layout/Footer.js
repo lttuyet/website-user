@@ -1,6 +1,4 @@
 import React, { PureComponent } from 'react';
-// import UserActions from '../../containers/UserActionsContainers';
-// import logo from '../../logotutor.PNG';
 
 class Footer extends PureComponent {
   render() {

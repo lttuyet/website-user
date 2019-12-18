@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import '../App.css';
-import CardTutor from '../CardTutor';
+import CardTutor from '../ListTutors/CardTutor';
 import { callAPI } from '../../utils/apiCaller';
 
 class TypicalTutors extends PureComponent {
