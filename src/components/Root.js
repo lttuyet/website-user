@@ -7,6 +7,7 @@ import RegisterContainer from '../containers/Register.container';
 import InforContainer from '../containers/Infor.container';
 import ListTutors from './ListTutors';
 import DetailsTutor from './DetailsTutor';
+import VerifyCodeContainer from '../containers/VerifyCode.container';
 
 const Root = ({ store }) => (
     <Provider store={store}>
@@ -23,6 +24,9 @@ const Root = ({ store }) => (
                 </Route>
                 <Route path="/listtutors">
                     <ListTutors/>
+                </Route>
+                <Route path="/verify">
+                    <VerifyCodeContainer/>
                 </Route>
                 <Route path="/detailstutor&id=:id" component={DetailsTutor} />
                 <Route path="/">

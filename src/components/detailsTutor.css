@@ -1,5 +1,11 @@
 
 /*****************globals*************/
+.mycard{
+
+  padding: 6px !important;
+
+}
+
 body {
     font-family: 'open sans';
     overflow-x: hidden; }
@@ -50,10 +56,7 @@ body {
       max-height: 100%;
     }
   
-  .card {
-    margin-top: 50px;
-   
-    line-height: 1.5em; }
+  
   
   @media screen and (min-width: 997px) {
     .wrapper {
@@ -87,7 +90,7 @@ body {
     color: #ff9f1a; }
   
   .product-title, .rating, .product-description, .price, .vote, .sizes {
-    margin-bottom: 15px; }
+    margin-bottom: 40px; }
   
   .product-title {
     margin-top: 0; }

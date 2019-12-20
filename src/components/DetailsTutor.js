@@ -6,7 +6,7 @@ import './App.css';
 import './detailsTutor.css';
 import { callAPI } from '../utils/apiCaller';
 import Menu from '../containers/MenuContainer';
-import ListPages from './ListTutors/ListPages';
+// import ListPages from './ListTutors/ListPages';
 import img from './ListTutors/logo192.png';
 
 class DetailsTutor extends PureComponent {
@@ -164,11 +164,14 @@ class DetailsTutor extends PureComponent {
                 </li>
               </ol>
             </nav>
-            <div className="container">
-              <div className="card">
+            <div className="row">
+            <div className="container col-4">
+              <div className="card mt-md-1">
                 <div className="container card-body">
-                  <div className="wrapper row">
-                    <div className="preview col-md-6">
+                  <div className="wrapper ">
+                    
+                    <div className="details w-100">
+                    <div className="preview ">
                       <div className="preview-pic tab-content">
                         {!st.tutor.image ? (
                           <img
@@ -177,13 +180,13 @@ class DetailsTutor extends PureComponent {
                             alt="..."
                           />
                         ) : (
-                          <img src={st.tutor.image} alt="..." />
+                          <img src={st.tutor.image} className="mx-auto d-block" alt="..." />
                         )}
                       </div>
                     </div>
-                    <div className="details col-md-6">
-                      <h3 className="product-title">{st.tutor.name}</h3>
-                      <div className="rating">
+                      <h4 className="product-title mx-auto">{st.tutor.name}</h4>
+                      
+                      <div className="rating product-description">
                         <div className="stars">
                           {(ratedRate -= 1) >= 0 ? (
                             <span className="fa fa-star checked" />
@@ -230,36 +233,38 @@ class DetailsTutor extends PureComponent {
                       <p className="product-description">Kỹ năng: {tag}</p>
                       <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-success"
                         data-toggle="button"
                         aria-pressed="false"
                       >
-                        Single toggle
+                        Thuê
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="row">
-                    <h2 className="separate text-center text-danger container">ĐÁNH GIÁ TỪ NGƯỜI HỌC</h2>
+            <div className="container col-8">
+            <div className="row m-md-2 mb-md-1">
+                    <h4 className="separate text-center text-danger">ĐÁNH GIÁ TỪ NGƯỜI HỌC</h4>
             </div>
+            <div className="myscroll">
 {/* Dưới này là 1 comment */}
-            <div className="card text-right container">
-              <div className="card-body" style={{ height: 'fit-content' }}>
-                <div className="row">
-                  <div className="col-3 text-center m-auto">
+            <div className="card text-left container " >
+              <div className="card-body mycard" >
+                <div className="row ">
+                  <div className="col-2 media">
                     <img
-                      className="img-thumbnail rounded mx-auto "
-                      style={{ height: '150px', width: '150px' }}
+                      className="align-self-center mr-3 mx-auto"
+                      style={{ height: '100px', width: '100px' }}
                       src={img}
                       alt="..."
                     />
                   </div>
                   <div className="card-text col-9 ">
-                    <div className="row ml-md-2">
+                    <div className="row ml-md-1  mt-md-2">
                       <div className="col-3">
-                        <h5 className="card-title float-left ">
+                        <h5 className="card-title float-left">
                           {st.tutor.name}
                         </h5>
                       </div>
@@ -272,14 +277,14 @@ class DetailsTutor extends PureComponent {
                         </div>
                       </div>
                     </div>
-                    <hr />
-                    <div className="row ml-md-1">
+                    
+                    <div className="row">
                       <div className="col-9 ">
-                        <div className="float-left">Tình trạng hợp đồng:</div>
+                        <div className="float-left ml-md-2">Tình trạng hợp đồng:</div>
                       </div>
                       <div className="col-3">
-                        Đánh giá:
-                        <div className="rating float-right ml-md-2">
+                       <span className=""> Đánh giá: </span>
+                        <div className="rating float-right">
                           <div className="stars">
                             {(ratedRate -= 1) >= 0 ? (
                               <span className="fa fa-star checked" />
@@ -310,17 +315,23 @@ class DetailsTutor extends PureComponent {
                         </div>
                       </div>
                     </div>
-                    <hr />
-                    <div className="row">
-                      <p className="container">
+                    
+                    <div className="row ">
+                        <div className="ml-md-4">
+                      
                         Eu eum corpora torquatos, ne postea constituto mea, quo
                         tale lorem facer no. Ut sed odio appetere partiendo, quo
                         meliore salutandi ex.
-                      </p>
+                      
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+            
+            </div>
+            </div>
             </div>
           </div>
         )}
