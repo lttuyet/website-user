@@ -48,7 +48,7 @@ body{
 
 .myscroll{
     overflow: auto;
-    height: 500px !important;
+    height: 300px !important;
     padding: 10px;
     margin-bottom: 10px;
 }
@@ -118,10 +118,9 @@ body{
 }
 /* Tutor card */
 
-.card{
- background-color: white !important;
-}
 
+
+ 
 .md-avatar {
   width: 140px;
   margin: 20px;
