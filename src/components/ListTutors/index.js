@@ -136,7 +136,7 @@ class ListTutor extends PureComponent {
 
         let tutorCards = tutorsCurrentPage.map((tutor) => {
             return (
-                <CardTutor tutor={tutor} />
+                <CardTutor tutor={tutor} isLogin = {st.isLogin}/>
             );
         });
 

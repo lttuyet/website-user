@@ -61,6 +61,11 @@ function CardTutor(data) {
           <button
             type="button"
             className="btn btn-success my-2 m-md-2 "
+            onClick={()=>{
+              if(!data.isLogin){
+                window.location.href = "/login"
+              }
+            }}
           >
             Thuê
           </button>

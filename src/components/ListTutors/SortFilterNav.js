@@ -91,7 +91,7 @@ class SortFilterNav extends PureComponent {
     }
 
     handleProvinceChange(e) {
-        this.setState({ province: e.target.value });
+        this.setState({ province: e.target.value, district: "Tất cả" });
     }
 
     handleDistrictChange(e) {
@@ -169,7 +169,7 @@ class SortFilterNav extends PureComponent {
                         </select>
                     </div>
                     <div className="ml-md-2 ">
-                        <label htmlFor="filter-country">Chuyên ngành</label>
+                        <label htmlFor="filter-country">Kỹ năng</label>
                         <select className="form-control sortcb" onChange={this.handleTagChange}>
                             {listtags}
                         </select>
