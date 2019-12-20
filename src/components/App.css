@@ -110,6 +110,11 @@
     color: white;
 }
 /* Tutor card */
+
+.card{
+ background-color: white !important;
+}
+
 .md-avatar {
   width: 140px;
   margin: 20px;
