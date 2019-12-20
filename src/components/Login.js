@@ -78,7 +78,7 @@ class Login extends PureComponent {
               st.login(user);
             }}>
             <div className="text-center mt-md-1">
-            
+
               <h1 className="h3 font-weight-normal separate">Đăng nhập</h1>
             </div>
 
@@ -104,7 +104,7 @@ class Login extends PureComponent {
               />
               <label htmlFor="inputPassword">Mật khẩu</label>
             </div>
-            <div><label className=" col-form-label-sm ml-md-1 text-danger">{st.errorInfo}</label></div>
+            <div><label className="text-danger">{st.errorInfo}</label></div>
             <button className="btn btn-lg btn-info btn-block" type="submit">
               Đăng nhập
           </button>
@@ -131,7 +131,7 @@ class Login extends PureComponent {
             </div>
           </form>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }

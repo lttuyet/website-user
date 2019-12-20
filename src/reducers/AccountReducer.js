@@ -8,7 +8,7 @@ export const initialState = {
     image: '',
     token: '',
     type: '',
-    user:null,
+    user: null,
 
     email: '',
     password: '',
@@ -22,12 +22,14 @@ const myReducer = (state = initialState, action) => {
     switch (action.type) {
         case actions.LOGIN: {
             try {
+
                 st.email = action.data.email;
                 st.password = action.data.password;
                 status = action.data.data.status;
 
-                if (status === 501) {
-                    st.errorInfo = 'Sai thông tin đăng nhập!';
+                if (status === "failed") {
+                    st.errorInfo = action.data.data.message;
+                    st.isLogin = false;
                 } else {
                     st.errorInfo = '';
                     st.isLogin = true;
@@ -35,8 +37,7 @@ const myReducer = (state = initialState, action) => {
                     st.name = action.data.data.data.name;
                     st.image = action.data.data.data.image || "";
                     st.token = action.data.data.token;
-                    
-                    
+
                     st.type = 'normal';
                 }
             } catch (err) {
@@ -49,8 +50,9 @@ const myReducer = (state = initialState, action) => {
             try {
                 status = action.data.res.data.status;
 
-                if (status === 501) {
-                    st.errorInfo = 'Sai thông tin đăng nhập!';
+                if (status === "failed") {
+                    st.errorInfo = action.data.res.data.message;
+                    st.isLogin = false;
                 } else {
                     st.errorInfo = '';
                     st.isLogin = true;
@@ -70,8 +72,9 @@ const myReducer = (state = initialState, action) => {
             try {
                 status = action.data.res.data.status;
 
-                if (status === 501) {
-                    st.errorInfo = 'Sai thông tin đăng nhập!';
+                if (status === "failed") {
+                    st.errorInfo = action.data.res.data.message;
+                    st.isLogin = false;
                 } else {
                     st.errorInfo = '';
                     st.isLogin = true;
@@ -81,15 +84,15 @@ const myReducer = (state = initialState, action) => {
                     st.token = action.data.res.data.token;
                     st.type = 'google';
                 }
-            // console.log(st);
+                // console.log(st);
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
             };
 
             return st;
         }
-        case actions.GET_INFO:{
-            try{
+        case actions.GET_INFO: {
+            try {
                 status = action.data.data.status;
 
                 if (status === 507) {
@@ -98,26 +101,28 @@ const myReducer = (state = initialState, action) => {
                     st.errorInfo = '';
                     st.user = action.data.data.user;
                 }
-            }catch(e){
+            } catch (e) {
                 st.errorInfo = '500';
             }
 
             return st;
         }
-        case actions.UPDATE_NAME:{
-            st.name=action.name;
+        case actions.UPDATE_NAME: {
+            st.name = action.name;
 
             return st;
         }
-        case actions.UPDATE_IMAGE:{
-            st.image=action.image;
+        case actions.UPDATE_IMAGE: {
+            st.image = action.image;
 
             return st;
         }
         case actions.LOGOUT:
             return initialState;
         default:
-            return state;
+            st.errorInfo = '';
+
+            return st;
     }
 };
 
