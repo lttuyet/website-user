@@ -8,6 +8,10 @@ function CardTutor(data) {
     return <div />;
   }
 
+  const handleClickDetails=(_id)=>{
+    window.location = `/detailstutor&id=${_id}`;
+  };
+
   const { tutor } = data;
   const { tags } = tutor;
   const n = tags.length;
@@ -48,6 +52,9 @@ function CardTutor(data) {
           <button
             type="button"
             className="btn myct my-2 m-md-2 "
+            onClick={()=>{
+              handleClickDetails(tutor._id);
+            }}
           >
             Xem chi tiết
           </button>

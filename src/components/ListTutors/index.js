@@ -64,11 +64,6 @@ class ListTutor extends PureComponent {
 
     render() {
         const st = this.state;
-
-        if (st.error) {
-            return <div />;
-        }
-
         const { tutors } = this.state;
 
         const filterList = tutors.filter(item => {
