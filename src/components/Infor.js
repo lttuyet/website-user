@@ -158,6 +158,22 @@ class Infor extends PureComponent {
                       {temp.intro}
                     </span>
                   </li>
+                  <li className="list-group-item p-4">
+                    <strong className="text-muted d-block mb-2">
+                      Kỹ năng
+                    </strong>
+                    <span>
+                      {temp.intro}
+                    </span>
+                  </li>
+                  <li className="list-group-item p-4">
+                    <strong className="text-muted d-block mb-2">
+                      Giá theo giờ
+                    </strong>
+                    <span>
+                      {temp.intro}
+                    </span>
+                  </li>
                 </ul>
               </div>
             </div>

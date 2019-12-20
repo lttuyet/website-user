@@ -63,7 +63,7 @@ function CardTutor(data) {
             className="btn btn-success my-2 m-md-2 "
             onClick={()=>{
               if(!data.isLogin){
-                window.location.href = "/login"
+                window.location.href = "/login";
               }
             }}
           >
