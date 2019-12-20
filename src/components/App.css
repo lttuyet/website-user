@@ -118,7 +118,9 @@ body{
 }
 /* Tutor card */
 
-
+form{
+color: black;
+}
 
  
 .md-avatar {

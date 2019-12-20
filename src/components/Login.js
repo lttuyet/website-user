@@ -108,6 +108,9 @@ class Login extends PureComponent {
             <button className="btn btn-lg btn-info btn-block" type="submit">
               Đăng nhập
           </button>
+          <div className="mt-md-2">
+          <a className="text-info ml-md-2  stretched-link" href="/email-forget-password">Quên mật khẩu?</a>
+          </div>
             <div className="social-login mt-md-2">
               <FacebookLogin
                 appId="1415360621958753"

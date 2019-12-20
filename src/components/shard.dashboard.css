@@ -332,9 +332,9 @@ pre {
 .form-control {
   height: auto;
   padding: 0.4375rem 0.75rem;
-  font-size: 0.8125rem;
+  font-size: 0.78rem;
   line-height: 1.5;
-  color: #495057;
+  color: #000;
   background-color: #fff;
   border: 1px solid #e1e5eb;
   font-weight: 300;
@@ -345,7 +345,7 @@ pre {
   .form-control:hover {
     border-color: #b3bdcc; }
   .form-control:focus {
-    color: #495057;
+    color: #000;
     background-color: #fff;
     border-color: #007bff;
     box-shadow: 0 0.313rem 0.719rem rgba(0, 123, 255, 0.1), 0 0.156rem 0.125rem rgba(0, 0, 0, 0.06); }
@@ -366,7 +366,7 @@ select.form-control:not([size]):not([multiple]) {
   height: calc(2.09375rem + 2px); }
 
 select.form-control:focus::-ms-value {
-  color: #495057;
+  color: #000;
   background-color: #fff; }
 
 select.form-control:hover {
@@ -449,7 +449,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   margin-top: 0.313rem;
   margin-left: -1.25rem; }
   .form-check-input:disabled ~ .form-check-label {
-    color: #868e96; }
+    color: #000; }
 
 .form-check-inline {
   margin-right: 0.75rem; }

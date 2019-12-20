@@ -99,7 +99,7 @@ class Register extends PureComponent {
 
   render() {
     const st = this.props;
-    const state = this.state;
+    const {state} = this;
 
     if (st.isLogin) {
       return <Redirect to="/" />;

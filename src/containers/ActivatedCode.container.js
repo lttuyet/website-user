@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 // import * as actions from '../actions/actions';
 
-import VerifyCode from '../components/ForgetPassword/VerifyCode';
+import ActivatedCode from '../components/ActivatedCode';
 
 const mapstToProps = state => {
   return {
@@ -15,9 +15,9 @@ const mapDispatchToProps = () => {
     
   };
 };
-const VerifyCodeContainer = connect(
+const ActivatedCodeContainer = connect(
   mapstToProps,
   mapDispatchToProps
-)(VerifyCode);
+)(ActivatedCode);
 
-export default VerifyCodeContainer;
+export default ActivatedCodeContainer;

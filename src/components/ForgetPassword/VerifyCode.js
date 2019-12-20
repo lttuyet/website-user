@@ -4,9 +4,9 @@
 /* eslint-disable react/no-unused-state */
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
-import Menu from '../containers/MenuContainer';
-import './App.css';
-import Footer from './layout/Footer';
+import Menu from '../../containers/MenuContainer';
+import '../App.css';
+import Footer from '../layout/Footer';
 
 class VerifyCode extends PureComponent {
   render() {
@@ -24,15 +24,15 @@ class VerifyCode extends PureComponent {
             
             <div className="text-center mt-md-1">
               <h1 className="h3 font-weight-normal separate">
-                Kích hoạt tài khoản
+                Xác thực tài khoản
               </h1>
             </div>
-            <div className=" mb-md-2">
+            <div className="mb-md-2">
                 
               <label>
               <span className="text-danger">***</span>
                 Mã xác thực đã được gửi đến địa chỉ email của bạn. Vui lòng nhập
-                mã xác thực để kích hoạt tài khoản.
+                mã xác thực để thực hiện đổi mới mật khẩu.
               </label>
             </div>
 
@@ -50,7 +50,7 @@ class VerifyCode extends PureComponent {
             <div>
               <label className="text-danger">{st.errorInfo}</label>
             </div>
-            <button className="btn btn-lg btn-info btn-block" type="submit">
+            <button href="/forget-password" className="btn btn-lg btn-info btn-block" type="submit">
               Xác nhận
             </button>
           </form>
