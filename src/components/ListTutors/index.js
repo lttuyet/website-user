@@ -173,8 +173,9 @@ class ListTutor extends PureComponent {
                             </p>
                         </div>
                         <div className="row">
-                            <SortFilterNav onClick={(data) => this.sortFilter(data)} />
+                            <SortFilterNav onClick={(data) => this.sortFilter(data)} /> 
                         </div>
+                        
                         <div className="row row-cols-1 row-cols-md-1">
                             {tutorCards}
                         </div>

@@ -130,7 +130,7 @@ class SortFilterNav extends PureComponent {
         });
 
         return (
-            <div className="text-info h-100 bg-secondary container rounded m-2 " >
+            <div className="text-info h-100 bg-secondary container rounded m-2 mb-md-3 " >
                 <form className="form-inline mx-auto " style={{ height: "80px" }}
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -139,28 +139,28 @@ class SortFilterNav extends PureComponent {
 
                         st.onClick(data);
                     }}>
-                    <div className="ml-md-1">
+                    <div className="ml-md-2">
                         <label>Sắp xếp</label>
-                        <select className="form-control" onChange={this.handleSortChange}>
+                        <select className="form-control sortcb" onChange={this.handleSortChange}>
                             <option value="1">Số hợp đồng tăng dần</option>
                             <option value="-1">Số hợp đồng giảm dần</option>
                         </select>
                     </div>
-                    <div className="ml-md-1">
+                    <div className="ml-md-2 ">
                         <label>Tỉnh</label>
-                        <select className="form-control" onChange={this.handleProvinceChange}>
+                        <select className="form-control sortcb" onChange={this.handleProvinceChange}>
                             {listProvince}
                         </select>
                     </div>
-                    <div className="ml-md-1">
+                    <div className="ml-md-2">
                         <label>Quận/Huyện</label>
-                        <select className="form-control" onChange={this.handleDistrictChange}>
+                        <select className="form-control sortcb" onChange={this.handleDistrictChange}>
                             {listDisTrict}
                         </select>
                     </div>
-                    <div className=" ml-md-1">
+                    <div className=" ml-md-2 ">
                         <label htmlFor="filter-category">Giá</label>
-                        <select id="filter-category" name="category" className="form-control" onChange={this.handlePriceChange}>
+                        <select id="filter-category" name="category" className="form-control sortcb" onChange={this.handlePriceChange}>
                             <option value="0">Tất cả</option>
                             <option value="1">0 - 100 KVNĐ</option>
                             <option value="2">100 - 200 KVNĐ</option>
@@ -168,9 +168,9 @@ class SortFilterNav extends PureComponent {
                             <option value="4">&gt; 300 KVNĐ</option>
                         </select>
                     </div>
-                    <div className="ml-md-1">
+                    <div className="ml-md-2 ">
                         <label htmlFor="filter-country">Chuyên ngành</label>
-                        <select className="form-control" onChange={this.handleTagChange}>
+                        <select className="form-control sortcb" onChange={this.handleTagChange}>
                             {listtags}
                         </select>
                     </div>
@@ -178,6 +178,7 @@ class SortFilterNav extends PureComponent {
                     <button type="submit" className="btn btn-danger btn-filter-movie mt-md-4 ml-md-4 "><span>Lọc</span></button>
                 </form>
             </div>
+           
         );
     }
 }

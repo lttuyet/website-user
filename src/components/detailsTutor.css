@@ -168,7 +168,7 @@ body {
     display: flex;
 }
 a.list-group-item.active small {
-    color:#fff;
+    color:#000;
 }
 .stars {
     

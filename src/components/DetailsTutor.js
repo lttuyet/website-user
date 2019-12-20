@@ -151,12 +151,12 @@ class DetailsTutor extends PureComponent {
           </div>
         ) : (
           <div>
-            <nav aria-label="breadcrumb">
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item">
+            <nav aria-label="breadcrumb ">
+              <ol className="breadcrumb bg-white ">
+                <li className="breadcrumb-item text-info">
                   <a href="/">Trang chủ</a>
                 </li>
-                <li className="breadcrumb-item">
+                <li className="breadcrumb-item text-info">
                   <a href="/listtutors">Danh sách gia sư</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
