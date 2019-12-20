@@ -259,8 +259,8 @@ body{
     box-sizing: border-box;
     position: relative;
     /* width: 13em;  - apply for fixed size */
-    margin: 0.2em;
-    padding: 0 5px 0 46px;
+    margin: 2px;
+    padding: 0 5px 0 40px;
     border: none;
     text-align: left;
     line-height: 34px;

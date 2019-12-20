@@ -208,13 +208,13 @@ class Register extends PureComponent {
               <h1 className="h3 font-weight-normal separate">Đăng ký</h1>
             </div>
             <div className="form-label-group ">
-              <div><label className=" ml-md-1">Loại tài khoản:</label></div>
+              <div><label className=" ml-md-1 col-form-label-sm" >Loại tài khoản:</label></div>
               <select className="custom-select custom-select form-control" value={this.state.role} onChange={this.handleRoleChange}>
                 <option value="learner" >Người học</option>
                 <option value="tutor">Người dạy</option>
               </select>
             </div>
-            <div className="form-label-group">
+            <div className="form-label-group mb-md-1">
               <input
                 type="text"
                 id="inputName"
@@ -226,16 +226,16 @@ class Register extends PureComponent {
               />
               <label htmlFor="inputName">Họ tên</label>
             </div>
-            <div className="form-label-group ">
-              <div className="row  mx-auto d-block">
-                <div className="ml-md-1">
-                  <label>Tỉnh/Thành phố</label>
+            <div className="form-label-group">
+              <div className="row ">
+                <div className="col-6">
+                  <label className="m-md-1 col-form-label-sm ">Tỉnh/Thành phố</label>
                   <select className="form-control" onChange={this.handleProvinceChange}>
                     {listProvince}
                   </select>
                 </div>
-                <div className="ml-md-1">
-                  <label>Quận/Huyện</label>
+                <div className="col-6">
+                  <label className=" m-md-1 col-form-label-sm " >Quận/Huyện</label>
                   <select className="form-control" onChange={this.handleDistrictChange}>
                     {listDisTrict}
                   </select>
@@ -250,7 +250,7 @@ class Register extends PureComponent {
                 required
                 value={this.state.address} onChange={this.handleAddressChange}
               />
-              <label htmlFor="inputAddress">Số nhà, Đường</label>
+              <label htmlFor="inputAddress" >Số nhà, Đường</label>
             </div>
             <div className="form-label-group">
               <input
@@ -273,7 +273,7 @@ class Register extends PureComponent {
               />
               <label htmlFor="inputPassword">Mật khẩu</label>
             </div>
-            <div><label className=" col-form-label-sm ml-md-1 text-danger">{this.state.errorInfo}</label></div>
+            <div><label className="col-form-label-sm ml-md-1 text-danger" >{this.state.errorInfo}</label></div>
             <button
               className="btn btn-lg btn-info btn-block"
               type="submit"
@@ -286,7 +286,7 @@ class Register extends PureComponent {
                 callback={responseFacebook}
                 fields="name,email,picture"
                 cssClass="loginBtn--facebook loginBtn"
-                textButton="Register vs Facebook "
+                textButton="Register vs Facebook"
               />
               <GoogleLogin
                 clientId="366483547912-mq7713gnkrffacq9e6p2na1i2os9jeed.apps.googleusercontent.com"
