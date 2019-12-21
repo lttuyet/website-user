@@ -48,9 +48,10 @@ body{
 
 .myscroll{
     overflow: auto;
-    height: 300px !important;
+    max-height: 720px !important;
     padding: 10px;
     margin-bottom: 10px;
+    background-color: ghostwhite ;
 }
 .banner{
   margin: 10px !important;

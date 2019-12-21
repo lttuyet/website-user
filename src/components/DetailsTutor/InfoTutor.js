@@ -1,11 +1,8 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-cond-assign */
-/* eslint-disable no-return-assign */
 import React, { PureComponent } from 'react';
 import '../App.css';
 import './detailsTutor.css';
 import img from '../ListTutors/logo192.png';
-import ShowRating from './ShowRating'
+import ShowRating from './ShowRating';
 
 class infoTutor extends PureComponent {
     render() {
