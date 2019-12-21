@@ -35,8 +35,6 @@ class Menu extends PureComponent {
                 </a>
               </li>
             }
-
-
           </ul>
           <form className="form-inline my-2 my-lg-0">
             {st.isLogin && (

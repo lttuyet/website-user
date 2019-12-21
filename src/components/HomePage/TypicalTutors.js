@@ -10,7 +10,6 @@ class TypicalTutors extends PureComponent {
         this.state = {
             tutors: [],
             error: false
-
         };
     }
 
