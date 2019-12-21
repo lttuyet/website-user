@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-autofocus */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-unused-state */
 import React, { PureComponent } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
@@ -19,8 +17,7 @@ class Login extends PureComponent {
 
     this.state = {
       email: '',
-      password: '',
-      errorInfo: ''
+      password: ''
     };
   }
 
@@ -34,6 +31,7 @@ class Login extends PureComponent {
 
   render() {
     const st = this.props;
+    const { state } = this;
 
     if (st.isLogin) {
       return <Redirect to="/" />;
@@ -70,18 +68,16 @@ class Login extends PureComponent {
               event.preventDefault();
 
               const user = {
-                email: this.state.email,
-                password: this.state.password,
+                email: state.email,
+                password: state.password,
                 type: 'normal'
               };
 
               st.login(user);
             }}>
             <div className="text-center mt-md-1">
-
               <h1 className="h3 font-weight-normal separate">Đăng nhập</h1>
             </div>
-
             <div className="form-label-group">
               <input
                 type="email"
@@ -89,17 +85,16 @@ class Login extends PureComponent {
                 className="form-control"
                 required
                 autoFocus
-                value={this.state.email} onChange={this.handleEmailChange}
+                value={state.email} onChange={this.handleEmailChange}
               />
               <label htmlFor="inputEmail">Email</label>
             </div>
-
             <div className="form-label-group">
               <input
                 type="password"
                 id="inputPassword"
                 className="form-control"
-                value={this.state.password} onChange={this.handlePasswordChange}
+                value={state.password} onChange={this.handlePasswordChange}
                 required
               />
               <label htmlFor="inputPassword">Mật khẩu</label>
@@ -108,9 +103,9 @@ class Login extends PureComponent {
             <button className="btn btn-lg btn-info btn-block" type="submit">
               Đăng nhập
           </button>
-          <div className="mt-md-2">
-          <a className="text-info ml-md-2  stretched-link" href="/email-forget-password">Quên mật khẩu?</a>
-          </div>
+            <div className="mt-md-2">
+              <a className="text-info ml-md-2  stretched-link" href="/email-forget-password">Quên mật khẩu?</a>
+            </div>
             <div className="social-login mt-md-2">
               <FacebookLogin
                 appId="1415360621958753"

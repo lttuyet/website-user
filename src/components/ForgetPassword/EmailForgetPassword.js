@@ -1,7 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-autofocus */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-unused-state */
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import Menu from '../../containers/MenuContainer';
@@ -21,20 +19,17 @@ class EmailForgetPassword extends PureComponent {
         <Menu />
         <div className="my_bd_rg ">
           <form className="form-signin myshadow">
-            
             <div className="text-center mt-md-1">
               <h1 className="h3 font-weight-normal separate">
                 Tìm tài khoản của bạn
               </h1>
             </div>
             <div className=" mb-md-2">
-                
               <label>
               <span className="text-danger">***</span>
                 Vui lòng nhập email tài khoản của bạn để tìm lại tài khoản
               </label>
             </div>
-
             <div className="form-label-group">
               <input
                 type="email"
@@ -45,7 +40,6 @@ class EmailForgetPassword extends PureComponent {
               />
               <label htmlFor="inputEmail">Địa chỉ email</label>
             </div>
-
             <div>
               <label className="text-danger">{st.errorInfo}</label>
             </div>

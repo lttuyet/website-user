@@ -87,10 +87,10 @@ class Register extends PureComponent {
   }
 
   handleProvinceChange(e) {
-    const st=this.state;
+    const st = this.state;
     const address = st.addresses.find(item => item.province === e.target.value);
-    
-    this.setState({ province: e.target.value ,district:address.districts[0]});
+
+    this.setState({ province: e.target.value, district: address.districts[0] });
   }
 
   handleDistrictChange(e) {
@@ -99,14 +99,14 @@ class Register extends PureComponent {
 
   render() {
     const st = this.props;
-    const {state} = this;
+    const { state } = this;
 
     if (st.isLogin) {
       return <Redirect to="/" />;
     }
 
     const responseFacebook = res => {
-      if(res.email){
+      if (res.email) {
         const user = {
           name: res.name,
           email: res.email,
@@ -119,7 +119,7 @@ class Register extends PureComponent {
         const response = callAPI('user/register', 'POST', user).then((r) => {
           try {
             const { status } = r.data;
-  
+
             if (status === "failed") {
               this.setState({ errorInfo: r.data.message });
             } else {
@@ -130,8 +130,8 @@ class Register extends PureComponent {
             this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
           }
         });
-      }else{
-        this.setState({ errorInfo:'Vui lòng cập nhật email facebook thực hiện chức năng này!'});
+      } else {
+        this.setState({ errorInfo: 'Vui lòng cập nhật email facebook thực hiện chức năng này!' });
       }
     };
 
@@ -151,13 +151,13 @@ class Register extends PureComponent {
 
           if (status === "failed") {
             this.setState({ errorInfo: res.data.message });
-            } else {
-              this.setState({ errorInfo: '' });
-              window.location = `/activate&id=${res.data.id}`;
-            }
-          } catch (err) {
-            this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+          } else {
+            this.setState({ errorInfo: '' });
+            window.location = `/activate&id=${res.data.id}`;
           }
+        } catch (err) {
+          this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+        }
       });
     };
 
@@ -181,7 +181,7 @@ class Register extends PureComponent {
           <form className="form-signin myshadow"
             onSubmit={(e) => {
               e.preventDefault();
-              const address=`${this.state.address}, ${this.state.district}, ${this.state.province}`;
+              const address = `${this.state.address}, ${this.state.district}, ${this.state.province}`;
 
               const user = {
                 name: this.state.name,

@@ -8,11 +8,7 @@ export const initialState = {
     image: '',
     token: '',
     type: '',
-    user: null,
-
-    email: '',
-    password: '',
-    address: '',
+    user: null
 };
 
 const myReducer = (state = initialState, action) => {
@@ -22,9 +18,6 @@ const myReducer = (state = initialState, action) => {
     switch (action.type) {
         case actions.LOGIN: {
             try {
-
-                st.email = action.data.email;
-                st.password = action.data.password;
                 status = action.data.data.status;
 
                 if (status === "failed") {
@@ -84,7 +77,6 @@ const myReducer = (state = initialState, action) => {
                     st.token = action.data.res.data.token;
                     st.type = 'google';
                 }
-                // console.log(st);
             } catch (err) {
                 st.errorInfo = 'Lỗi kết nối, vui lòng thử lại!';
             };

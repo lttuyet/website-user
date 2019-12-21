@@ -24,7 +24,7 @@ class ActivatedCode extends PureComponent {
       error: 0,
       loaded: false,
       email: '',
-      errorCommit:''
+      errorCommit: ''
     };
   }
 
@@ -45,18 +45,18 @@ class ActivatedCode extends PureComponent {
       }
 
       if (res.data.status === 'success') {
-        if(res.data.codeMess===4){
+        if (res.data.codeMess === 4) {
           this.setState({
             error: 0,
             loaded: true
           });
-        }else{
+        } else {
           this.setState({
             error: res.data.message,
-            email:res.data.email,
+            email: res.data.email,
           });
         }
-      }      
+      }
     } catch (e) {
       this.setState({
         error: "Lỗi kết nối! Vui lòng tải lại trang!"
@@ -70,7 +70,7 @@ class ActivatedCode extends PureComponent {
 
   render() {
     const st = this.props;
-    const {state} = this;
+    const { state } = this;
 
     if (st.isLogin) {
       return <Redirect to="/" />;

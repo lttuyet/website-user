@@ -30,7 +30,7 @@ const Root = ({ store }) => (
                 <Route path="/listtutors">
                     <ListTutors />
                 </Route>
-                <Route path="/activate&id=:id" component={ActivatedCodeContainer}/>
+                <Route path="/activate&id=:id" component={ActivatedCodeContainer} />
 
 
                 <Route path="/verify">

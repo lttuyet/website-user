@@ -11,7 +11,7 @@ const mapstToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    
+
   };
 };
 const ActivatedCodeContainer = connect(
