@@ -106,30 +106,33 @@ class Register extends PureComponent {
     }
 
     const responseFacebook = res => {
-      const user = {
-        name: res.name,
-        email: res.email,
-        role: this.state.role,
-        type: "facebook",
-        idFb: res.id,
-        image: res.picture.data.url
-      };
+      if(res.email){
+        const user = {
+          name: res.name,
+          email: res.email,
+          role: this.state.role,
+          type: "facebook",
+          idFb: res.id,
+          image: res.picture.data.url
+        };
 
-      const response = callAPI('user/register', 'POST', user).then((r) => {
-        try {
-          const { status } = r.data;
-
-          if (status === 500) {
-            this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
-
-          } else {
-            this.setState({ errorInfo: '' });
-            window.location = "/login";
+        const response = callAPI('user/register', 'POST', user).then((r) => {
+          try {
+            const { status } = r.data;
+  
+            if (status === "failed") {
+              this.setState({ errorInfo: r.data.message });
+            } else {
+              this.setState({ errorInfo: '' });
+              window.location = `/activate&id=${res.data.id}`;
+            }
+          } catch (err) {
+            this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
           }
-        } catch (err) {
-          this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
-        }
-      });
+        });
+      }else{
+        this.setState({ errorInfo:'Vui lòng cập nhật email facebook thực hiện chức năng này!'});
+      }
     };
 
     const responseGoogle = (res) => {
@@ -146,16 +149,15 @@ class Register extends PureComponent {
         try {
           const { status } = res.data;
 
-          if (status === 500) {
-            this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
-
-          } else {
-            this.setState({ errorInfo: '' });
-            window.location = "/login";
+          if (status === "failed") {
+            this.setState({ errorInfo: res.data.message });
+            } else {
+              this.setState({ errorInfo: '' });
+              window.location = `/activate&id=${res.data.id}`;
+            }
+          } catch (err) {
+            this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
           }
-        } catch (err) {
-          this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
-        }
       });
     };
 
@@ -193,11 +195,11 @@ class Register extends PureComponent {
                 try {
                   const { status } = res.data;
 
-                  if (status === 500) {
-                    this.setState({ errorInfo: 'Tài khoản đã tồn tại!' });
+                  if (status === "failed") {
+                    this.setState({ errorInfo: res.data.message });
                   } else {
                     this.setState({ errorInfo: '' });
-                    window.location = "/login";
+                    window.location = `/activate&id=${res.data.id}`;
                   }
                 } catch (err) {
                   this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
@@ -219,7 +221,6 @@ class Register extends PureComponent {
                 type="text"
                 id="inputName"
                 className="form-control"
-                // placeholder="Tên hiển thị"
                 required
                 autoFocus
                 value={this.state.name} onChange={this.handleNameChange}

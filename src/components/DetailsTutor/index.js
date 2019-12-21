@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-cond-assign */
-/* eslint-disable no-return-assign */
 import React, { PureComponent } from 'react';
 import '../App.css';
 import './detailsTutor.css';
@@ -9,11 +6,30 @@ import Menu from '../../containers/MenuContainer';
 import Footer from '../layout/Footer';
 import InfoTutor from '../../containers/InfoTutorContainer';
 import ListPages from '../ListTutors/ListPages';
-import img from '../ListTutors/logo192.png';
-import ShowRating from './ShowRating';
 import HistoryContract from './HistoryContract';
 
+// error: bạn không thể thuê vì gia sư này  chưa cập nhật thông tin đầy đủ
+// vui lòng đăng nhập để thực hiện chức năng này
+// Bạn không thể thực hiện chức năng này với vai trò là gia sư, vui lòng đăng nhập tài khoản người học
+// chuyển tới trang tạo hợp đồng
+// Bạn vui lòng cập nhật đầy đủ thông tin người học để thực hiện chức năng này
 
+/*
+
+          {((data.isLogin&&data.role === 'learner')||(!data.isLogin)) &&
+            <button
+              type="button"
+              className="btn btn-success my-2 m-md-2 "
+              onClick={() => {
+                if (!data.isLogin) {
+                  window.location.href = "/login";
+                }
+              }}
+            >
+              Thuê
+        </button>}
+
+*/
 
 class DetailsTutor extends PureComponent {
     constructor(props) {

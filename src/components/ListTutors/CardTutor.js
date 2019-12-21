@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';
-
 import img from './logo192.png';
 
 function CardTutor(data) {
@@ -58,19 +57,6 @@ function CardTutor(data) {
           >
             Xem chi tiết
           </button>
-          {((data.isLogin&&data.role === 'learner')||(!data.isLogin)) &&
-            <button
-              type="button"
-              className="btn btn-success my-2 m-md-2 "
-              onClick={() => {
-                if (!data.isLogin) {
-                  window.location.href = "/login";
-                }
-              }}
-            >
-              Thuê
-        </button>}
-
         </div>
       </div>
     </div>

@@ -8,6 +8,8 @@ import InforContainer from '../containers/Infor.container';
 import ListTutors from './ListTutors';
 import DetailsTutor from './DetailsTutor/index';
 import ActivatedCodeContainer from '../containers/ActivatedCode.container';
+
+
 import ForgetPasswordContainer from '../containers/ForgetPassword.container';
 import VerifyCodeContainer from '../containers/VerifyCode.container';
 import EmailForgetPasswordContainer from '../containers/EmailForgetPassword.container';
@@ -28,9 +30,9 @@ const Root = ({ store }) => (
                 <Route path="/listtutors">
                     <ListTutors />
                 </Route>
-                <Route path="/activated">
-                    <ActivatedCodeContainer />
-                </Route>
+                <Route path="/activate&id=:id" component={ActivatedCodeContainer}/>
+
+
                 <Route path="/verify">
                     <VerifyCodeContainer />
                 </Route>
@@ -40,6 +42,8 @@ const Root = ({ store }) => (
                 <Route path="/forget-password">
                     <ForgetPasswordContainer />
                 </Route>
+
+
                 <Route path="/detailstutor&id=:id" component={DetailsTutor} />
                 <Route path="/">
                     <HomePageContainer />
