@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/destructuring-assignment */
@@ -22,7 +23,8 @@ class ActivatedCode extends PureComponent {
       code: '',
       error: 0,
       loaded: false,
-      email: ''
+      email: '',
+      errorCommit:''
     };
   }
 
@@ -35,7 +37,7 @@ class ActivatedCode extends PureComponent {
   checkStatusAccount = async id => {
     try {
       const res = await callAPI('user/checkstatus', 'POST', { id });
-console.log(res);
+
       if (res.data.status === 'failed') {
         this.setState({
           error: res.data.message
@@ -90,16 +92,16 @@ console.log(res);
 
                 const res = callAPI('user/activatedcode', 'POST', data).then((r) => {
                   try {
-                    const { status } = res.data;
+                    const { status } = r.data;
 
                     if (status === "failed") {
-                      this.setState({ errorInfo: res.data.message });
+                      this.setState({ errorCommit: r.data.message });
                     } else {
-                      this.setState({ errorInfo: '' });
+                      this.setState({ errorCommit: '' });
                       window.location = "/login";
                     }
                   } catch (err) {
-                    this.setState({ errorInfo: 'Lỗi kết nối, vui lòng thử lại!' });
+                    this.setState({ errorCommit: 'Lỗi kết nối, vui lòng thử lại!' });
                   }
                 });
               }}>
@@ -127,7 +129,7 @@ console.log(res);
                 <label htmlFor="inputVerfyCode">Mã kích hoạt</label>
               </div>
               <div>
-                <label className="text-danger">{st.errorInfo}</label>
+                <label className="text-danger">{state.errorCommit}</label>
               </div>
               <button className="btn btn-lg btn-info btn-block" type="submit">
                 Xác nhận
