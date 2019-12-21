@@ -6,7 +6,7 @@ import HomePageContainer from '../containers/HomePage.container';
 import RegisterContainer from '../containers/Register.container';
 import InforContainer from '../containers/Infor.container';
 import ListTutors from './ListTutors';
-import DetailsTutor from './DetailsTutor';
+import DetailsTutor from './DetailsTutor/index';
 import ActivatedCodeContainer from '../containers/ActivatedCode.container';
 import ForgetPasswordContainer from '../containers/ForgetPassword.container';
 import VerifyCodeContainer from '../containers/VerifyCode.container';
@@ -26,19 +26,19 @@ const Root = ({ store }) => (
                     <InforContainer />
                 </Route>
                 <Route path="/listtutors">
-                    <ListTutors/>
+                    <ListTutors />
                 </Route>
                 <Route path="/activated">
-                    <ActivatedCodeContainer/>
+                    <ActivatedCodeContainer />
                 </Route>
                 <Route path="/verify">
-                    <VerifyCodeContainer/>
+                    <VerifyCodeContainer />
                 </Route>
                 <Route path="/email-forget-password">
-                    <EmailForgetPasswordContainer/>
+                    <EmailForgetPasswordContainer />
                 </Route>
                 <Route path="/forget-password">
-                    <ForgetPasswordContainer/>
+                    <ForgetPasswordContainer />
                 </Route>
                 <Route path="/detailstutor&id=:id" component={DetailsTutor} />
                 <Route path="/">
