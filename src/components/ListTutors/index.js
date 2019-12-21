@@ -21,7 +21,8 @@ class ListTutor extends PureComponent {
             province: 'Tất cả',
             district: 'Tất cả',
             price: 0,
-            tag: 'Tất cả'
+            tag: 'Tất cả',
+            loaded: false
         };
     }
 
@@ -36,7 +37,8 @@ class ListTutor extends PureComponent {
             this.setState({
                 tutors: res.data.tutors,
                 page: 0,
-                error: false
+                error: false,
+                loaded: true
             });
         } catch (e) {
             this.setState({
@@ -136,7 +138,7 @@ class ListTutor extends PureComponent {
 
         let tutorCards = tutorsCurrentPage.map((tutor) => {
             return (
-                <CardTutor tutor={tutor} isLogin = {st.isLogin}/>
+                <CardTutor tutor={tutor} />
             );
         });
 
@@ -162,8 +164,7 @@ class ListTutor extends PureComponent {
                         </button>
                         <i className="fa fa-check mx-2" />
                         <strong>Thất bại!</strong> Xảy ra lỗi trong quá trình tải! Vui lòng thử lại!
-                    </div>
-                }
+                </div>}
 
                 <div className="row ">
                     <div className="container ">
@@ -173,16 +174,16 @@ class ListTutor extends PureComponent {
                             </p>
                         </div>
                         <div className="row">
-                            <SortFilterNav onClick={(data) => this.sortFilter(data)} /> 
+                            <SortFilterNav onClick={(data) => this.sortFilter(data)} />
                         </div>
-                        
-                        <div className="row row-cols-1 row-cols-md-1">
-                            {tutorCards}
-                        </div>
+                        {st.loaded &&
+                            <div className="row row-cols-1 row-cols-md-1">
+                                {tutorCards}
+                            </div>
+                        }
                         <div className="row mt-md-5 mr-md-2 float-right">
                             <ListPages className="page" current={page} size={size} onClick={(p) => { this.setPage(p); }} />
                         </div>
-
                     </div>
                 </div>
                 <Footer />

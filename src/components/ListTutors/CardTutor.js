@@ -8,7 +8,7 @@ function CardTutor(data) {
     return <div />;
   }
 
-  const handleClickDetails=(_id)=>{
+  const handleClickDetails = (_id) => {
     window.location = `/detailstutor&id=${_id}`;
   };
 
@@ -52,23 +52,25 @@ function CardTutor(data) {
           <button
             type="button"
             className="btn myct my-2 m-md-2 "
-            onClick={()=>{
+            onClick={() => {
               handleClickDetails(tutor._id);
             }}
           >
             Xem chi tiết
           </button>
-          <button
-            type="button"
-            className="btn btn-success my-2 m-md-2 "
-            onClick={()=>{
-              if(!data.isLogin){
-                window.location.href = "/login";
-              }
-            }}
-          >
-            Thuê
-          </button>
+          {((data.isLogin&&data.role === 'learner')||(!data.isLogin)) &&
+            <button
+              type="button"
+              className="btn btn-success my-2 m-md-2 "
+              onClick={() => {
+                if (!data.isLogin) {
+                  window.location.href = "/login";
+                }
+              }}
+            >
+              Thuê
+        </button>}
+
         </div>
       </div>
     </div>
