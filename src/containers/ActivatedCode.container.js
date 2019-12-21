@@ -5,8 +5,7 @@ import ActivatedCode from '../components/ActivatedCode';
 
 const mapstToProps = state => {
   return {
-    isLogin: state.AccountReducer.isLogin,
-    errorInfo: state.AccountReducer.errorInfo
+    isLogin: state.AccountReducer.isLogin
   };
 };
 
