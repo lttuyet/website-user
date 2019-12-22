@@ -31,14 +31,13 @@ const Root = ({ store }) => (
                     <ListTutors />
                 </Route>
                 <Route path="/activate&id=:id" component={ActivatedCodeContainer} />
-
-
-                <Route path="/verify">
-                    <VerifyCodeContainer />
-                </Route>
                 <Route path="/email-forget-password">
                     <EmailForgetPasswordContainer />
                 </Route>
+                <Route path="/verify&id=:id" component={VerifyCodeContainer}/>
+
+                
+
                 <Route path="/forget-password">
                     <ForgetPasswordContainer />
                 </Route>
