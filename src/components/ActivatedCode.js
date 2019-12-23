@@ -98,7 +98,7 @@ class ActivatedCode extends PureComponent {
                       this.setState({ errorCommit: r.data.message });
                     } else {
                       this.setState({ errorCommit: '' });
-                      window.location = "/login";
+                      window.location = `/forget-password&id=${this.state.id}`;
                     }
                   } catch (err) {
                     this.setState({ errorCommit: 'Lỗi kết nối, vui lòng thử lại!' });

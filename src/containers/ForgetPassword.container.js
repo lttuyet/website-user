@@ -6,7 +6,8 @@ import ForgetPassword from '../components/ForgetPassword/ForgetPassword';
 const mapstToProps = state => {
   return {
     isLogin: state.AccountReducer.isLogin,
-    errorInfo: state.AccountReducer.errorInfo
+    errorInfo: state.AccountReducer.errorInfo,
+    isVerified: state.VerifyReducer.isVerified
   };
 };
 

@@ -5,6 +5,9 @@ export const LOGOUT = 'LOGOUT';
 export const GET_INFO = "GET_INFO";
 export const UPDATE_NAME = "UPDATE_NAME";
 export const UPDATE_IMAGE = "UPDATE_IMAGE";
+export const VERIFY = "VERIFY";
+export const RECOVER_PASS = "RECOVER_PASS";
+
 
 export const ADD_TAG = "ADD_TAG";
 export const REMOVE_TAG = "REMOVE_TAG";

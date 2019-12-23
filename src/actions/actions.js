@@ -99,6 +99,48 @@ export const updateImage = (image) => ({
     image
 });
 
+function OnClickVerify(data) {
+    const res = callAPI('user/verify', 'POST', data).catch(err => {
+        return err;
+    });
+
+    return res;
+}
+
+export const verify = (res) => ({
+    type: actions.VERIFY,
+    data: res
+});
+
+export const verifyRequest = (data) => {
+    return (dispatch) => {
+        return OnClickVerify(data).then(res => {
+            dispatch(verify({ res, data }));
+        });
+    };
+};
+
+function OnClickRecoverPass(data) {
+    const res = callAPI('user/forget-password', 'POST', data).catch(err => {
+        return err;
+    });
+
+    return res;
+}
+
+export const recoverPass = (res) => ({
+    type: actions.RECOVER_PASS,
+    data: res
+});
+
+export const recoverPassRequest = (data) => {
+    return (dispatch) => {
+        return OnClickRecoverPass(data).then(res => {
+            dispatch(recoverPass({ res, data }));
+        });
+    };
+};
+
 // ----------------------------
 
 export const addTag = (tag) =>({
