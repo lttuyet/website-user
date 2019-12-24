@@ -56,7 +56,7 @@ class infoTutor extends PureComponent {
             }
 
             if (countRate !== 0) {
-                ratedRate = Math.ceil(sumRate / (countRate * 5));
+                ratedRate = Math.ceil(sumRate / countRate);
             }
         }
 

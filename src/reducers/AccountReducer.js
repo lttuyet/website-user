@@ -121,7 +121,7 @@ const myReducer = (state = initialState, action) => {
                     st.image = action.data.res.data.image || "";
                     st.token = action.data.res.token;
                     st.type = 'normal';
-                    st.errorInfo='';
+                    st.errorInfo = '';
                 }
             } catch{
                 st.error = "Kết nối lỗi! Vui lòng thử lại!";

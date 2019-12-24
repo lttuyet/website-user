@@ -8,8 +8,6 @@ import InforContainer from '../containers/Infor.container';
 import ListTutors from './ListTutors';
 import DetailsTutor from './DetailsTutor/index';
 import ActivatedCodeContainer from '../containers/ActivatedCode.container';
-
-
 import ForgetPasswordContainer from '../containers/ForgetPassword.container';
 import VerifyCodeContainer from '../containers/VerifyCode.container';
 import EmailForgetPasswordContainer from '../containers/EmailForgetPassword.container';

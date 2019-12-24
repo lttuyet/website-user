@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.updateName(name));
     },
     updateImage: (image) => {
-      dispatch(actions.updateName(image));
+      dispatch(actions.updateImage(image));
     },
   };
 };

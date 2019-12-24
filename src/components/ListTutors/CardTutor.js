@@ -30,7 +30,7 @@ function CardTutor(data) {
       <div className="col-lg m-auto ">
         {
           tutor.image ?
-            <img src={tutor.image} className="md-avatar " alt="..." /> :
+            <img src={tutor.image} className="md-avatar round mx-auto d-block " alt="..." /> :
             <img src={img} className="md-avatar round mx-auto d-block" alt="..." />
         }
         <h5 className="card-title text-center ">{tutor.name}</h5>
