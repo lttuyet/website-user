@@ -57,8 +57,8 @@ class Infor extends PureComponent {
                                                 st.handleInfo(2, "Ảnh đại diện của bạn chưa được cập nhật!");
                                             } else {
                                                 st.handleImage(image.image);
-                                                st.handleInfo(1, "Ảnh đại diện của bạn đã được cập nhật!");
                                                 st.updateImage(image.image);
+                                                st.handleInfo(1, "Ảnh đại diện của bạn đã được cập nhật!");
                                             }
                                         });
                                     } catch (e) {

@@ -10,28 +10,27 @@ import TagInput from '../TagInput';
 import { callAPIAuth } from '../../utils/apiCaller';
 import CardInfo from './CardInfo';
 import ImageInfo from './ImageInfo';
-
+import PersonalInfo from './PersonalInfo';
 
 class Infor extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleBasicInfo = this.handleBasicInfo.bind(this);
     this.handleInfo = this.handleInfo.bind(this);
     this.handleImage = this.handleImage.bind(this);
 
     this.state = {
       user: null,
-      name: '',
-      address: '',
       intro: '',
       temp: {
         name: '',
         address: '',
         intro: ''
       },
-      error: 0
+      error: 0,
+      typeInfo: 0,
+      info: ''
     };
   }
 
@@ -91,21 +90,33 @@ class Infor extends PureComponent {
     });
   }
 
-  handleNameChange(e) {
-    this.setState({
-      name: e.target.value
-    });
-  }
+  handleBasicInfo(name, address) {
+    const { user } = this.state;
 
-  handleAddressChange(e) {
     this.setState({
-      address: e.target.value
+      user: {
+        name,
+        image: user.image,
+        address,
+        intro: user.intro,
+        tags: user.tags,
+        price: user.price
+      }
     });
   }
 
   render() {
     const st = this.props;
     const { state } = this;
+    let personal = null;
+
+    if (state.user) {
+      personal = {
+        name: state.user.name,
+        address: state.user.address,
+        token: st.token
+      };
+    };
 
     const { temp } = state;
 
@@ -177,84 +188,10 @@ class Infor extends PureComponent {
 
 
 
+              {state.user && (
+                <PersonalInfo value={personal} handleInfo={this.handleInfo} handleBasicInfo={this.handleBasicInfo} updateName={st.updateName} />
 
-              <div className="card card-small mb-4">
-                <div className="card-header border-bottom">
-                  <h6 className="m-0">Thông tin cá nhân</h6>
-                </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item p-3">
-                    <div className="row">
-                      <div className="col">
-                        <form onSubmit={event => {
-                          event.preventDefault();
-
-                          const data = {
-                            name: state.name,
-                            address: state.address
-                          };
-
-                          // eslint-disable-next-line no-unused-vars
-                          const result = callAPIAuth('updatebasic', 'POST', st.token, data).then((res) => {
-                            try {
-                              const { status } = res.data;
-
-                              if (status === "failed") {
-                                this.setState({
-                                  typeInfo: 2,
-                                  info: 'Thông tin cá nhân của bạn chưa được cập nhật!'
-                                });
-                              } else {
-                                this.setState({
-                                  typeInfo: 1,
-                                  info: 'Thông tin cá nhân của bạn đã được cập nhật!',
-                                  temp: {
-                                    address: data.address
-                                  }
-                                });
-                                st.updateName(state.name);
-                              }
-                            } catch (err) {
-                              this.setState({ typeInfo: 2, info: 'Lỗi kết nối, vui lòng thử lại!' });
-                            }
-                          });
-                        }}>
-                          <div className="form-group ">
-                            <label htmlFor="feFirstName">Họ và tên</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="feFirstName"
-                              placeholder="Họ và tên"
-                              defaultValue={state.name}
-                              onChange={this.handleNameChange}
-                            />
-                          </div>
-
-                          <div className="form-group">
-                            <label htmlFor="feInputAddress">Địa chỉ</label>
-                            <input
-                              type="text"
-                              className="form-control"
-                              id="feInputAddress"
-                              placeholder="Địa chỉ"
-                              defaultValue={state.address}
-                              onChange={this.handleAddressChange}
-                            />
-                          </div>
-
-                          <button type="submit" className="btn btn-info">
-                            Cập nhật
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-
-
+              )}
 
 
 
