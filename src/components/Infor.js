@@ -25,7 +25,8 @@ class Infor extends PureComponent {
         name: '',
         address: '',
         intro: ''
-      }
+      },
+      error: 0
     };
   }
 
@@ -34,26 +35,34 @@ class Infor extends PureComponent {
   }
 
   getUser = async () => {
-    const { token } = this.props;
+    try {
+      const { token } = this.props;
 
-    const res = await callAPIAuth('me', 'GET', token, {});
-    const { user } = res.data;
+      const res = await callAPIAuth('me', 'GET', token, {});
+      const { user } = res.data;
 
-    this.setState({
-      name: user.name,
-      address: user.address,
-      intro: user.intro,
-      typeInfo: 0,
-      info: '',
-      image: '',
-      temp: {
+      this.setState({
         name: user.name,
         address: user.address,
-        intro: user.intro
-      }
-    });
+        intro: user.intro,
+        typeInfo: 0,
+        info: '',
+        image: '',
+        temp: {
+          name: user.name,
+          address: user.address,
+          intro: user.intro
+        },
+        error:0
+      });
+    } catch (e) {
+      this.setState({
+        error:1
+      });
+    }
+
   }
-  
+
   handleNameChange(e) {
     this.setState({
       name: e.target.value
