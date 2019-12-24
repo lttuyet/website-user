@@ -9,6 +9,8 @@ import MenuContainer from '../../containers/MenuContainer';
 import TagInput from '../TagInput';
 import { callAPIAuth } from '../../utils/apiCaller';
 import CardInfo from './CardInfo';
+import ImageInfo from './ImageInfo';
+
 
 class Infor extends PureComponent {
   constructor(props) {
@@ -16,6 +18,8 @@ class Infor extends PureComponent {
 
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleInfo = this.handleInfo.bind(this);
+    this.handleImage = this.handleImage.bind(this);
 
     this.state = {
       user: null,
@@ -63,6 +67,28 @@ class Infor extends PureComponent {
       });
     }
 
+  }
+
+  handleInfo(typeInfo, info) {
+    this.setState({
+      typeInfo,
+      info
+    });
+  }
+
+  handleImage(image) {
+    const { user } = this.state;
+
+    this.setState({
+      user: {
+        name: user.name,
+        image,
+        address: user.address,
+        intro: user.intro,
+        tags: user.tags,
+        price: user.price
+      }
+    });
   }
 
   handleNameChange(e) {
@@ -134,94 +160,7 @@ class Infor extends PureComponent {
             </div>
             <div className="col-lg-8">
               {state.user && (
-                <div className="card card-small mb-4">
-                  <div className="card-header border-bottom">
-                    <h6 className="m-0">Ảnh đại diện</h6>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item p-3">
-                      <div className="row">
-                        <div className="col">
-                          <form onSubmit={async event => {
-                            event.preventDefault();
-
-                            try {
-                              const data = new FormData();
-
-                              data.append('file', state.image);
-                              data.append('upload_preset', 'carovn');
-
-                              const res = await fetch(
-                                'https://api.cloudinary.com/v1_1/dgfvzem0u/image/upload',
-                                {
-                                  method: 'POST',
-                                  body: data
-                                }
-                              );
-
-
-                              const file = await res.json();
-                              const image = {
-                                image: file.secure_url
-                              };
-
-                              const result = await callAPIAuth('updateimage', 'POST', st.token, image).then((response) => {
-                                const { status } = response.data;
-
-                                if (status === "failed") {
-                                  this.setState({
-                                    typeInfo: 2,
-                                    info: 'Ảnh đại diện của bạn chưa được cập nhật!'
-                                  });
-                                } else {
-                                  const { user } = this.state;
-                                  user.image = file.secure_url;
-
-                                  this.setState({
-                                    user,
-                                    typeInfo: 1,
-                                    info: 'Ảnh đại diện của bạn đã được cập nhật!'
-                                  });
-
-                                  st.updateImage(user.image);
-
-
-
-                                }
-
-
-                              });
-
-                            } catch (e) {
-                              this.setState({ typeInfo: 2, info: 'Lỗi kết nối, vui lòng thử lại!' });
-
-                            }
-
-
-
-
-                          }}
-                          >
-                            <input
-                              type="file"
-                              name="file"
-                              accept="image/*"
-                              onChange={async e => {
-                                const { files } = e.target;
-                                this.setState({
-                                  image: files[0]
-                                });
-                              }} />
-
-                            <button type="submit" className="btn btn-info">
-                              Cập nhật
-                          </button>
-                          </form>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                <ImageInfo handleInfo={this.handleInfo} handleImage={this.handleImage} updateImage={st.updateImage} token={st.token} />
               )}
 
 
@@ -260,7 +199,7 @@ class Infor extends PureComponent {
                             try {
                               const { status } = res.data;
 
-                              if (status === 509) {
+                              if (status === "failed") {
                                 this.setState({
                                   typeInfo: 2,
                                   info: 'Thông tin cá nhân của bạn chưa được cập nhật!'
@@ -313,6 +252,14 @@ class Infor extends PureComponent {
                   </li>
                 </ul>
               </div>
+
+
+
+
+
+
+
+
 
               {st.role === 'tutor' && (
                 <div className="card card-small mb-4">
