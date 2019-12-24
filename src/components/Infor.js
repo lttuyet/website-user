@@ -1,7 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/sort-comp */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
@@ -33,18 +29,6 @@ class Infor extends PureComponent {
     };
   }
 
-  handleNameChange(e) {
-    this.setState({
-      name: e.target.value
-    });
-  }
-
-  handleAddressChange(e) {
-    this.setState({
-      address: e.target.value
-    });
-  }
-
   componentDidMount() {
     this.getUser();
   }
@@ -69,10 +53,24 @@ class Infor extends PureComponent {
       }
     });
   }
+  
+  handleNameChange(e) {
+    this.setState({
+      name: e.target.value
+    });
+  }
+
+  handleAddressChange(e) {
+    this.setState({
+      address: e.target.value
+    });
+  }
 
   render() {
     const st = this.props;
-    const { temp } = this.state;
+    const { state } = this;
+
+    const { temp } = state;
 
     if (!st.isLogin) {
       return <Redirect to="/login" />;
@@ -85,7 +83,7 @@ class Infor extends PureComponent {
     return (
       <div>
         <MenuContainer />
-        {this.state.typeInfo === 1 &&
+        {state.typeInfo === 1 &&
           <div
             className="alert alert-success alert-dismissible fade show mb-0"
             role="alert"
@@ -99,9 +97,9 @@ class Infor extends PureComponent {
               <span aria-hidden="true">×</span>
             </button>
             <i className="fa fa-check mx-2" />
-            <strong>Thành công!</strong> {this.state.info}
+            <strong>Thành công!</strong> {state.info}
           </div>}
-        {this.state.typeInfo === 2 &&
+        {state.typeInfo === 2 &&
           <div
             className="alert alert-danger alert-dismissible fade show mb-0"
             role="alert"
@@ -115,7 +113,7 @@ class Infor extends PureComponent {
               <span aria-hidden="true">×</span>
             </button>
             <i className="fa fa-check mx-2" />
-            <strong>Thất bại!</strong> {this.state.info}
+            <strong>Thất bại!</strong> {state.info}
           </div>
         }
         <div className="main-content-container container-fluid px-4">
@@ -192,7 +190,7 @@ class Infor extends PureComponent {
 
                           const data = new FormData();
 
-                          data.append('file', this.state.image);
+                          data.append('file', state.image);
                           data.append('upload_preset', 'carovn');
 
                           // eslint-disable-next-line no-undef
@@ -203,8 +201,6 @@ class Infor extends PureComponent {
                               body: data
                             }
                           );
-
-                          console.log(res);
 
                           const file = res;
                           const image = {
@@ -230,7 +226,7 @@ class Infor extends PureComponent {
                                   }
                                 });
 
-                                st.updateImage(this.state.file.secure_url);
+                                st.updateImage(state.file.secure_url);
                               }
                             } catch (err) {
                               this.setState({ typeInfo: 2, info: 'Lỗi kết nối, vui lòng thử lại!' });
@@ -271,8 +267,8 @@ class Infor extends PureComponent {
                           event.preventDefault();
 
                           const data = {
-                            name: this.state.name,
-                            address: this.state.address
+                            name: state.name,
+                            address: state.address
                           };
 
                           // eslint-disable-next-line no-unused-vars
@@ -293,7 +289,7 @@ class Infor extends PureComponent {
                                     address: data.address
                                   }
                                 });
-                                st.updateName(this.state.name);
+                                st.updateName(state.name);
                               }
                             } catch (err) {
                               this.setState({ typeInfo: 2, info: 'Lỗi kết nối, vui lòng thử lại!' });
@@ -307,7 +303,7 @@ class Infor extends PureComponent {
                               className="form-control"
                               id="feFirstName"
                               placeholder="Họ và tên"
-                              defaultValue={this.state.name}
+                              defaultValue={state.name}
                               onChange={this.handleNameChange}
                             />
                           </div>
@@ -319,7 +315,7 @@ class Infor extends PureComponent {
                               className="form-control"
                               id="feInputAddress"
                               placeholder="Địa chỉ"
-                              defaultValue={this.state.address}
+                              defaultValue={state.address}
                               onChange={this.handleAddressChange}
                             />
                           </div>
