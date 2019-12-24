@@ -76,7 +76,12 @@ class VerifyCode extends PureComponent {
       return <Redirect to="/" />;
     }
 
-    if(st.isVerified&&st.id===this.state.id){
+    if (st.error === "Tài khoản chưa yêu cầu gửi mã xác thực quên mật khẩu người dùng!") {
+      return <Redirect to="/email-forget-password" />;
+    }
+
+    // khi đã xác thực và cùng id thì chuyển trang, ko thì cho xác thực lại
+    if (st.isVerified && st.id === this.state.id) {
       return <Redirect to={`/forget-password&id=${st.id}`} />;
     }
 
@@ -95,7 +100,7 @@ class VerifyCode extends PureComponent {
                 };
 
                 st.verify(data);
-                }}>
+              }}>
               <div className="text-center mt-md-1">
                 <h1 className="h3 font-weight-normal separate">
                   Xác thực tài khoản
@@ -122,7 +127,7 @@ class VerifyCode extends PureComponent {
               <div>
                 <label className="text-danger">{st.error}</label>
               </div>
-              <button href="/forget-password" className="btn btn-lg btn-info btn-block" type="submit">
+              <button className="btn btn-lg btn-info btn-block" type="submit">
                 Xác nhận
             </button>
             </form>

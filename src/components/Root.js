@@ -34,8 +34,8 @@ const Root = ({ store }) => (
                 <Route path="/email-forget-password">
                     <EmailForgetPasswordContainer />
                 </Route>
-                <Route path="/verify&id=:id" component={VerifyCodeContainer}/>
-                <Route path="/forget-password&id=:id" component={ForgetPasswordContainer}/>
+                <Route path="/verify&id=:id" component={VerifyCodeContainer} />
+                <Route path="/forget-password&id=:id" component={ForgetPasswordContainer} />
                 <Route path="/detailstutor&id=:id" component={DetailsTutor} />
                 <Route path="/">
                     <HomePageContainer />

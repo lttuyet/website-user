@@ -1,21 +1,26 @@
 import { connect } from 'react-redux';
-// import * as actions from '../actions/actions';
+import * as actions from '../actions/actions';
 
 import ForgetPassword from '../components/ForgetPassword/ForgetPassword';
 
 const mapstToProps = state => {
   return {
     isLogin: state.AccountReducer.isLogin,
-    errorInfo: state.AccountReducer.errorInfo,
-    isVerified: state.VerifyReducer.isVerified
+    isVerified: state.VerifyReducer.isVerified,
+    id:state.VerifyReducer.id,
+    code:state.VerifyReducer.code,
+    error:state.VerifyReducer.error
+  }; 
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    recoverPass: (data) => {
+      dispatch(actions.recoverPassRequest(data));
+    },
   };
 };
 
-const mapDispatchToProps = () => {
-  return {
-    
-  };
-};
 const ForgetPasswordContainer = connect(
   mapstToProps,
   mapDispatchToProps

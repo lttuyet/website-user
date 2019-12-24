@@ -69,7 +69,7 @@ export const logout = () => ({
 });
 
 function OnClickGetInfo(token) {
-    const res = callAPIAuth('me', 'GET', token,{}).catch(err => {
+    const res = callAPIAuth('me', 'GET', token, {}).catch(err => {
         return err;
     });
 
@@ -143,12 +143,12 @@ export const recoverPassRequest = (data) => {
 
 // ----------------------------
 
-export const addTag = (tag) =>({
+export const addTag = (tag) => ({
     type: actions.ADD_TAG,
     data: tag
 });
 
-export const removetag = (tag) =>({
+export const removetag = (tag) => ({
     type: actions.REMOVE_TAG,
     data: tag
 });

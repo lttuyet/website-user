@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
+
 const VerifyCodeContainer = connect(
   mapstToProps,
   mapDispatchToProps

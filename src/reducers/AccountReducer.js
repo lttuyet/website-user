@@ -109,8 +109,25 @@ const myReducer = (state = initialState, action) => {
 
             return st;
         }
-        case actions.LOGOUT:
+        case actions.LOGOUT: {
             return initialState;
+        }
+        case actions.RECOVER_PASS: {
+            try {
+                if (action.data.res.data.status === 'success') {
+                    st.isLogin = true;
+                    st.role = action.data.res.data.role;
+                    st.name = action.data.res.data.name;
+                    st.image = action.data.res.data.image || "";
+                    st.token = action.data.res.token;
+                    st.type = 'normal';
+                }
+            } catch{
+                st.error = "Kết nối lỗi! Vui lòng thử lại!";
+            }
+
+            return st;
+        }
         default:
             st.errorInfo = '';
 
