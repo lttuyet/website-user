@@ -9,6 +9,7 @@ import CardInfo from './CardInfo';
 import ImageInfo from './ImageInfo';
 import PersonalInfo from './PersonalInfo';
 import TutorInfo from './TutorInfo';
+import ChangePass from './ChangePass';
 
 class Infor extends PureComponent {
   constructor(props) {
@@ -184,7 +185,14 @@ class Infor extends PureComponent {
         <div className="main-content-container container-fluid px-4">
           <div className="row mt-md-4">
             <div className="col-lg-4">
-              <CardInfo value={state.user} />
+              <div>
+                <CardInfo value={state.user} />
+              </div>
+              <div>
+                {state.user &&
+                  <ChangePass token={st.token} handleInfo={this.handleInfo} />
+                }
+              </div>
             </div>
             <div className="col-lg-8">
               {state.user && (

@@ -155,6 +155,7 @@ class PersonalInfo extends PureComponent {
                                             placeholder="Họ và tên"
                                             defaultValue={state.name}
                                             onChange={this.handleNameChange}
+                                            required
                                         />
                                     </div>
                                     <div className="form-label-group">
@@ -182,9 +183,9 @@ class PersonalInfo extends PureComponent {
                                             placeholder="Địa chỉ"
                                             defaultValue={state.address}
                                             onChange={this.handleAddressChange}
+                                            required
                                         />
                                     </div>
-
                                     <button type="submit" className="btn btn-info">
                                         Cập nhật
                                     </button>

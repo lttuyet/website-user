@@ -90,6 +90,7 @@ class TutorInfo extends PureComponent {
                                                     rows="5"
                                                     defaultValue={state.intro}
                                                     onChange={this.handleIntroChange}
+                                                    required
                                                 />
                                             </div>
                                         </div>
@@ -108,6 +109,7 @@ class TutorInfo extends PureComponent {
                                                     id="feInputCost"
                                                     defaultValue={state.price}
                                                     onChange={this.handlePriceChange}
+                                                    required
                                                 />
                                             </div>
                                         </div>

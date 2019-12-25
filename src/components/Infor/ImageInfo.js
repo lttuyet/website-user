@@ -62,7 +62,7 @@ class Infor extends PureComponent {
                                             }
                                         });
                                     } catch (e) {
-                                        st.handleInfo(2, "Lỗi kết nốiiiiiiiiiiii, vui lòng thử lại!");
+                                        st.handleInfo(2, "Lỗi kết nối, vui lòng thử lại!");
                                     }
                                 }}
                                 >
@@ -75,7 +75,8 @@ class Infor extends PureComponent {
                                             this.setState({
                                                 image: files[0]
                                             });
-                                        }} />
+                                        }}
+                                        required />
 
                                     <button type="submit" className="btn btn-info">
                                         Cập nhật
