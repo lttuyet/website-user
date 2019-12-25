@@ -6,11 +6,12 @@ import '../App.css';
 import '../extra.css';
 import '../shard.dashboard.css';
 import MenuContainer from '../../containers/MenuContainer';
-import TagInput from '../TagInput';
+import TagInput from './TagInput';
 import { callAPIAuth } from '../../utils/apiCaller';
 import CardInfo from './CardInfo';
 import ImageInfo from './ImageInfo';
 import PersonalInfo from './PersonalInfo';
+import TutorInfo from './TutorInfo';
 
 class Infor extends PureComponent {
   constructor(props) {
@@ -19,10 +20,10 @@ class Infor extends PureComponent {
     this.handleBasicInfo = this.handleBasicInfo.bind(this);
     this.handleInfo = this.handleInfo.bind(this);
     this.handleImage = this.handleImage.bind(this);
+    this.handleTutorInfo = this.handleTutorInfo.bind(this);
 
     this.state = {
       user: null,
-      intro: '',
       temp: {
         name: '',
         address: '',
@@ -105,10 +106,26 @@ class Infor extends PureComponent {
     });
   }
 
+  handleTutorInfo(intro, tags, price) {
+    const { user } = this.state;
+
+    this.setState({
+      user: {
+        name: user.name,
+        image: user.image,
+        address: user.address,
+        intro,
+        tags,
+        price
+      }
+    });
+  }
+
   render() {
     const st = this.props;
     const { state } = this;
     let personal = null;
+    let tutor = null;
 
     if (state.user) {
       personal = {
@@ -116,6 +133,20 @@ class Infor extends PureComponent {
         address: state.user.address,
         token: st.token
       };
+
+      try {
+        tutor = {
+          intro: state.user.intro,
+          tags: state.user.tags,
+          price: state.user.price
+        };
+      } catch (e) {
+        tutor = {
+          intro: '',
+          tags: {},
+          price: ''
+        };
+      }
     };
 
     const { temp } = state;
@@ -173,24 +204,8 @@ class Infor extends PureComponent {
               {state.user && (
                 <ImageInfo handleInfo={this.handleInfo} handleImage={this.handleImage} updateImage={st.updateImage} token={st.token} />
               )}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               {state.user && (
                 <PersonalInfo value={personal} handleInfo={this.handleInfo} handleBasicInfo={this.handleBasicInfo} updateName={st.updateName} />
-
               )}
 
 
@@ -198,101 +213,9 @@ class Infor extends PureComponent {
 
 
 
-              {st.role === 'tutor' && (
-                <div className="card card-small mb-4">
-                  <div className="card-header border-bottom">
-                    <h6 className="m-0">Giới thiệu bản thân</h6>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item p-3">
-                      <div className="row">
-                        <div className="col">
-                          <form>
-                            <div className="form-row">
-                              <div className="form-group col-md-12">
-                                <label htmlFor="feDescription">
-                                  Giới thiệu bản thân
-                                </label>
-                                <textarea
-                                  className="form-control"
-                                  name="feDescription"
-                                  rows="5"
-                                >
-                                  Lorem ipsum dolor sit amet consectetur
-                                  adipisicing elit. Odio eaque, quidem, commodi
-                                  soluta qui quae minima obcaecati quod dolorum
-                                  sint alias, possimus illum assumenda eligendi
-                                  cumque?
-                                </textarea>
-                              </div>
-                            </div>
+              {(st.role === 'tutor' && state.user) && (
+                < TutorInfo value={tutor} handleInfo={this.handleInfo} handleTutorInfo={this.handleTutorInfo}/>
 
-                            <button type="button" className="btn btn-info">
-                              Cập nhật
-                            </button>
-                          </form>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              )}
-              {st.role === 'tutor' && (
-                <div className="card card-small mb-4">
-                  <div className="card-header border-bottom">
-                    <h6 className="m-0">Thông tin kỹ năng</h6>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item p-3">
-                      <div className="row">
-                        <div className="col">
-                          <form>
-                            <div>
-                              <label htmlFor="feDescription">Tag kĩ năng</label>
-                              <TagInput selectedTags={selectedTags} tags={[]} />
-                            </div>
-
-                            <button type="button" className="btn btn-info">
-                              Cập nhật
-                            </button>
-                          </form>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              )}
-              {st.role === 'tutor' && (
-                <div className="card card-small mb-4">
-                  <div className="card-header border-bottom">
-                    <h6 className="m-0">Thông tin giá theo giờ</h6>
-                  </div>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item p-3">
-                      <div className="row">
-                        <div className="col">
-                          <form>
-                            <div className="form-group">
-                              <label htmlFor="feInputAddress">
-                                Giá theo giờ:
-                              </label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                id="feInputCost"
-                                placeholder="100000"
-                              />{' '}
-                            </div>
-
-                            <button type="button" className="btn btn-info">
-                              Cập nhật
-                            </button>
-                          </form>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
               )}
             </div>
           </div>

@@ -118,33 +118,34 @@ class PersonalInfo extends PureComponent {
                     <li className="list-group-item p-3">
                         <div className="row">
                             <div className="col">
-                                <form onSubmit={event => {
-                                    event.preventDefault();
+                                <form
+                                    onSubmit={event => {
+                                        event.preventDefault();
 
-                                    const addr = `${state.address}, ${state.district}, ${state.province}`;
+                                        const addr = `${state.address}, ${state.district}, ${state.province}`;
 
-                                    const data = {
-                                        name: state.name,
-                                        address: addr
-                                    };
+                                        const data = {
+                                            name: state.name,
+                                            address: addr
+                                        };
 
-                                    // eslint-disable-next-line no-unused-vars
-                                    const result = callAPIAuth('updatebasic', 'POST', prs.token, data).then((res) => {
-                                        try {
-                                            const { status } = res.data;
+                                        // eslint-disable-next-line no-unused-vars
+                                        const result = callAPIAuth('updatebasic', 'POST', prs.token, data).then((res) => {
+                                            try {
+                                                const { status } = res.data;
 
-                                            if (status === "failed") {
-                                                st.handleInfo(2, "Thông tin cá nhân của bạn chưa được cập nhật!");
-                                            } else {
-                                                st.handleInfo(1, 'Thông tin cá nhân của bạn đã được cập nhật!');
-                                                st.handleBasicInfo(data.name, data.address);
-                                                st.updateName(state.name);
+                                                if (status === "failed") {
+                                                    st.handleInfo(2, "Thông tin cá nhân của bạn chưa được cập nhật!");
+                                                } else {
+                                                    st.handleInfo(1, 'Thông tin cá nhân của bạn đã được cập nhật!');
+                                                    st.handleBasicInfo(data.name, data.address);
+                                                    st.updateName(state.name);
+                                                }
+                                            } catch (err) {
+                                                st.handleInfo(2, "Lỗi kết nối, vui lòng thử lại!");
                                             }
-                                        } catch (err) {
-                                            st.handleInfo(2, "Lỗi kết nối, vui lòng thử lại!");
-                                        }
-                                    });
-                                }}>
+                                        });
+                                    }}>
                                     <div className="form-group ">
                                         <label htmlFor="feFirstName">Họ và tên</label>
                                         <input
