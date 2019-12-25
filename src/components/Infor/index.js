@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import '../App.css';
 import '../extra.css';
 import '../shard.dashboard.css';
 import MenuContainer from '../../containers/MenuContainer';
-import TagInput from './TagInput';
 import { callAPIAuth } from '../../utils/apiCaller';
 import CardInfo from './CardInfo';
 import ImageInfo from './ImageInfo';
@@ -21,15 +18,10 @@ class Infor extends PureComponent {
     this.handleInfo = this.handleInfo.bind(this);
     this.handleImage = this.handleImage.bind(this);
     this.handleTutorInfo = this.handleTutorInfo.bind(this);
+    this.handleClose = this.handleClose.bind(this);
 
     this.state = {
       user: null,
-      temp: {
-        name: '',
-        address: '',
-        intro: ''
-      },
-      error: 0,
       typeInfo: 0,
       info: ''
     };
@@ -42,31 +34,19 @@ class Infor extends PureComponent {
   getUser = async () => {
     try {
       const { token } = this.props;
-
       const res = await callAPIAuth('me', 'GET', token, {});
       const { user } = res.data;
 
       this.setState({
         user,
-        name: user.name,
-        address: user.address,
-        intro: user.intro,
         typeInfo: 0,
-        info: '',
-        image: '',
-        temp: {
-          name: user.name,
-          address: user.address,
-          intro: user.intro
-        },
-        error: 0
+        info: ''
       });
     } catch (e) {
       this.setState({
-        error: 1
+        info: 'Lấy thông tin người dùng thất bại!'
       });
     }
-
   }
 
   handleInfo(typeInfo, info) {
@@ -86,7 +66,8 @@ class Infor extends PureComponent {
         address: user.address,
         intro: user.intro,
         tags: user.tags,
-        price: user.price
+        price: user.price,
+        role: user.role
       }
     });
   }
@@ -101,7 +82,8 @@ class Infor extends PureComponent {
         address,
         intro: user.intro,
         tags: user.tags,
-        price: user.price
+        price: user.price,
+        role: user.role
       }
     });
   }
@@ -116,10 +98,20 @@ class Infor extends PureComponent {
         address: user.address,
         intro,
         tags,
-        price
+        price,
+        role: user.role
       }
     });
   }
+
+  handleClose() {
+    this.setState({
+      typeInfo: 0,
+      info: ''
+    });
+  }
+
+
 
   render() {
     const st = this.props;
@@ -149,15 +141,9 @@ class Infor extends PureComponent {
       }
     };
 
-    const { temp } = state;
-
     if (!st.isLogin) {
       return <Redirect to="/login" />;
     }
-
-    const selectedTags = tags => {
-      // console.log(tags);
-    };
 
     return (
       <div>
@@ -170,10 +156,10 @@ class Infor extends PureComponent {
             <button
               type="button"
               className="close"
-              data-dismiss="alert"
+              data-dismiss={this.handleClose}
               aria-label="Close"
             >
-              <span aria-hidden="true">×</span>
+              <span aria-hidden="true" onClick={this.handleClose}>×</span>
             </button>
             <i className="fa fa-check mx-2" />
             <strong>Thành công!</strong> {state.info}
@@ -207,19 +193,12 @@ class Infor extends PureComponent {
               {state.user && (
                 <PersonalInfo value={personal} handleInfo={this.handleInfo} handleBasicInfo={this.handleBasicInfo} updateName={st.updateName} />
               )}
-
-
-
-
-
-
               {(st.role === 'tutor' && state.user) && (
-                < TutorInfo value={tutor} handleInfo={this.handleInfo} handleTutorInfo={this.handleTutorInfo}/>
+                < TutorInfo value={tutor} handleInfo={this.handleInfo} handleTutorInfo={this.handleTutorInfo} token={st.token} />
 
               )}
             </div>
           </div>
-          {/* <!-- End Default Light Table --> */}
         </div>
       </div >
     );

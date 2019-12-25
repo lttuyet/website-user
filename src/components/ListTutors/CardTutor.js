@@ -1,4 +1,5 @@
 import React from 'react';
+import Avatar from 'react-avatar';
 import '../App.css';
 import img from './logo192.png';
 
@@ -30,8 +31,8 @@ function CardTutor(data) {
       <div className="col-lg m-auto ">
         {
           tutor.image ?
-            <img src={tutor.image} className="md-avatar round mx-auto d-block " alt="..." /> :
-            <img src={img} className="md-avatar round mx-auto d-block" alt="..." />
+            <Avatar src={tutor.image} className="md-avatar round mx-auto d-block " alt="..." /> :
+            <Avatar src={img} className="md-avatar round mx-auto d-block" alt="..." />
         }
         <h5 className="card-title text-center ">{tutor.name}</h5>
         <div style={{ minHeight: "40px" }}>

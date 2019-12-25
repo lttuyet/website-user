@@ -41,7 +41,6 @@ class TutorInfo extends PureComponent {
 
     render() {
         const st = this.props;
-        const prs = st.value;
         const { state } = this;
 
         return (
@@ -65,7 +64,7 @@ class TutorInfo extends PureComponent {
                                             };
 
                                             // eslint-disable-next-line no-unused-vars
-                                            const result = callAPIAuth('updatetutorinfo', 'POST', prs.token, data).then((res) => {
+                                            const result = callAPIAuth('updatetutorinfo', 'POST', st.token, data).then((res) => {
                                                 try {
                                                     const { status } = res.data;
 

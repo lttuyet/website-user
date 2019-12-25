@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { PureComponent } from 'react';
 import Avatar from 'react-avatar';
 import '../App.css';
@@ -41,10 +40,10 @@ class Infor extends PureComponent {
                         </div>
                         <div className=" mx-auto ">
                             {user.role === 'tutor' && (
-                                <span className="text-muted d-block mb-2"> Gia sư</span>
+                                <h6 className="text-muted d-block"> Gia sư</h6>
                             )}
                             {user.role === 'learner' && (
-                                <span className="text-muted d-block mb-2"> Người học</span>
+                                <h6 className="text-muted d-block"> Người học</h6>
                             )}
                         </div>
 
@@ -91,7 +90,7 @@ class Infor extends PureComponent {
                                     Giá theo giờ
                                 </strong>
                                 <span>
-                                    {`${user.intro} KVNĐ` || "Chưa cập nhật"}
+                                    {`${user.price} KVNĐ` || "Chưa cập nhật"}
                                 </span>
                             </li>
                         </ul>

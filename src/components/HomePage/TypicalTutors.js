@@ -39,12 +39,15 @@ class TypicalTutors extends PureComponent {
         }
 
         const { tutors } = this.state;
+        let tutorCards;
 
-        const tutorCards = tutors.map((tutor) => {
-            return (
-                <CardTutor tutor={tutor} />
-            );
-        });
+        if (tutors) {
+            tutorCards = tutors.map((tutor) => {
+                return (
+                    <CardTutor tutor={tutor} />
+                );
+            });
+        }
 
         return (
             <div className="bg-light m-10 mt-md-5">
