@@ -55,7 +55,10 @@ export default class UserActions extends React.Component {
               }}>
                 <i className="material-icons" /> Quản lý cá nhân
               </DropdownItem>
-              <DropdownItem tag={Link} to="file-manager-list">
+              <DropdownItem tag={Link} to="file-manager-list"
+              onClick={() => {
+                window.location.href = './tutorcontract';
+              }}>
                 <i className="material-icons" /> Quản lý lớp học
               </DropdownItem>
               <DropdownItem tag={Link} to="transaction-history">

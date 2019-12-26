@@ -11,6 +11,7 @@ import ActivatedCodeContainer from '../containers/ActivatedCode.container';
 import ForgetPasswordContainer from '../containers/ForgetPassword.container';
 import VerifyCodeContainer from '../containers/VerifyCode.container';
 import EmailForgetPasswordContainer from '../containers/EmailForgetPassword.container';
+import TutorContract from '../containers/TutorContractContainer';
 
 const Root = ({ store }) => (
     <Provider store={store}>
@@ -35,6 +36,9 @@ const Root = ({ store }) => (
                 <Route path="/verify&id=:id" component={VerifyCodeContainer} />
                 <Route path="/forget-password&id=:id" component={ForgetPasswordContainer} />
                 <Route path="/detailstutor&id=:id" component={DetailsTutor} />
+                <Route path="/tutorcontract">
+                    <TutorContract/>
+                </Route>
                 <Route path="/">
                     <HomePageContainer />
                 </Route>
