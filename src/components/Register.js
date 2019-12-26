@@ -22,6 +22,8 @@ class Register extends PureComponent {
     this.handleAddressChange = this.handleAddressChange.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleDistrictChange = this.handleDistrictChange.bind(this);
+    this.handleProvinceChange = this.handleProvinceChange.bind(this);
 
     this.state = {
       role: 'learner',
